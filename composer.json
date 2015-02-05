@@ -32,8 +32,8 @@
     },
     "autoload": {
         "psr-4": {
-            "UniAlteri\\Paypal\\Express\\": ["src/curl-request"],
-            "UniAlteri\\Tests\\Paypal\\": ["tests/curl-request"]
+            "UniAlteri\\Curl\\": ["src/curl-request/"],
+            "UniAlteri\\Tests\\Curl\\": ["tests/curl-request/"]
         }
     },
     "archive": {
