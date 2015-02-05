@@ -9,7 +9,7 @@
 
 namespace UniAlteri\Tests\Curl;
 
-use Zeroem\CurlBundle\Curl\CurlOptions;
+use UniAlteri\Curl\CurlOptions;
 
 class CurlOptionsTest extends \PHPUnit_Framework_TestCase
 {

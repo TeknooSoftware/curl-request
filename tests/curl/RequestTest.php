@@ -9,7 +9,7 @@
 
 namespace UniAlteri\Tests\Curl;
 
-use Zeroem\CurlBundle\Curl\Request;
+use UniAlteri\Curl\Request;
 
 class RequestTest extends \PHPUnit_Framework_TestCase
 {

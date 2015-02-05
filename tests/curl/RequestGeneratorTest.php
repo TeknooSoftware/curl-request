@@ -9,10 +9,8 @@
 
 namespace UniAlteri\Tests\Curl;
 
-use Zeroem\CurlBundle\Curl\RequestGenerator;
-use Zeroem\CurlBundle\Curl\Request;
-
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use UniAlteri\Curl\Request;
+use UniAlteri\Curl\RequestGenerator;
 
 class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,7 +18,7 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new RequestGenerator();
 
         $this->assertInstanceOf(
-            "\Zeroem\CurlBundle\Curl\Request",
+            'UniAlteri\Curl\Request',
             $generator->getRequest()
         );
 
@@ -28,7 +26,7 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new RequestGenerator($request);
 
         $this->assertInstanceOf(
-            "\Zeroem\CurlBundle\Curl\Request",
+            'UniAlteri\Curl\Request',
             $generator->getRequest()
         );
 
