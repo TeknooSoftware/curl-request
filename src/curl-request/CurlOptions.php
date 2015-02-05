@@ -8,19 +8,20 @@
  */
 
 
-namespace Zeroem\CurlBundle\Curl;
+namespace UniAlteri\Curl;
 
 /**
  * Curl Options and the valid type(s) for each
  */
-final class CurlOptions
+class CurlOptions
 {
     static private $option_value_types = array();
 
     /**
      * Checks which cURL constants is defined and loads them as valid options
      */
-    static private function loadOptions() {
+    static private function loadOptions()
+    {
 
         if (static::$option_value_types) {
             return;
@@ -151,7 +152,8 @@ final class CurlOptions
      * @param int $option An Integer Flag
      * @return boolean Whether or not the flag is a valid cURL option
      */
-    static public function isValidOption($option) {
+    static public function isValidOption($option)
+    {
 
         if (!static::$option_value_types) {
             static::loadOptions();
@@ -169,7 +171,8 @@ final class CurlOptions
      *
      * @throws \InvalidArgumentException if the $option _is_not_ a valid cURL option
      */
-    static public function checkOptionValue($option, $value, $throw = true) {
+    static public function checkOptionValue($option, $value, $throw = true)
+    {
 
         if (!static::$option_value_types) {
             static::loadOptions();
@@ -188,7 +191,8 @@ final class CurlOptions
         }
     }
 
-    static private function checkType($value, $type) {
+    static private function checkType($value, $type)
+    {
 
         $result = false;
 

@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Zeroem\CurlBundle\Curl;
+namespace UniAlteri\Curl;
 
 /**
  * A service class for generating Curl\Request objects with an initial
@@ -15,9 +15,13 @@ namespace Zeroem\CurlBundle\Curl;
  */
 class RequestGenerator
 {
-    private $request;
+    /**
+     * @var Request
+     */
+    protected $request;
 
-    public function __construct($arg=array()) {
+    public function __construct($arg=array())
+    {
         if(is_array($arg)) {
             $this->request = new Request();
             $this->request->setOptionArray($arg);
@@ -29,6 +33,7 @@ class RequestGenerator
             } else {
                 $type = gettype($arg);
             }
+
             throw new \LogicException(
                 "Unsupported argument type.  Expected array instance of Request. Got {$type}."
             );
@@ -40,7 +45,8 @@ class RequestGenerator
      *
      * @return Request a cURL Request object
      */
-    public function getRequest() {
+    public function getRequest()
+    {
         return clone $this->request;
     }
 }

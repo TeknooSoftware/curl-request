@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Zeroem\CurlBundle\Curl;
+namespace UniAlteri\Curl;
 
 /**
  * An OO wrapper on the curl_* functions in PHP
@@ -18,27 +18,27 @@ class Request implements CurlRequest
      * the cURL handle resource for this request
      * @var resource
      */
-    private $handle;
+    protected $handle;
 
     /**
      * Map specific HTTP requests to their appropriate CURLOPT_* constant
      *
      * @var array
      */
-    static private $_methodOptionMap = array(
-        "GET"=>CURLOPT_HTTPGET,
-        "POST"=>CURLOPT_POST,
-        "HEAD"=>CURLOPT_NOBODY,
-        "PUT"=>CURLOPT_PUT
-    );
-
+    static private $_methodOptionMap = [
+        'GET'=>CURLOPT_HTTPGET,
+        'POST'=>CURLOPT_POST,
+        'HEAD'=>CURLOPT_NOBODY,
+        'PUT'=>CURLOPT_PUT
+    ];
 
     /**
      * Instantiate a new cURL Request object
      *
      * @param $url string URL to initialize the cURL handle with
      */
-    public function __construct($url=null) {
+    public function __construct($url=null)
+    {
         if(isset($url)) {
             $this->handle = curl_init($url);
         } else {
@@ -51,14 +51,16 @@ class Request implements CurlRequest
      *
      * @return resource the curl handle
      */
-    public function getHandle() {
+    public function getHandle()
+    {
         return $this->handle;
     }
 
     /**
      * Alias of the curl_setopt function
      */
-    public function setOption($option, $value) {
+    public function setOption($option, $value)
+    {
         if(CurlOptions::checkOptionValue($option,$value)) {
             return curl_setopt($this->handle, $option, $value);
         }
@@ -67,7 +69,8 @@ class Request implements CurlRequest
     /**
      * Alias of the curl_setopt_array function
      */
-    public function setOptionArray(array $arr) {
+    public function setOptionArray(array $arr)
+    {
         foreach($arr as $option => $value) {
             CurlOptions::checkOptionValue($option, $value);
         }
@@ -75,7 +78,8 @@ class Request implements CurlRequest
         return curl_setopt_array($this->handle, $arr);
     }
 
-    public function __destruct() {
+    public function __destruct()
+    {
         curl_close($this->handle);
     }
 
@@ -85,7 +89,8 @@ class Request implements CurlRequest
      * @return mixed the results of curl_exec
      * @throws CurlErrorException
      */
-    public function execute() {
+    public function execute()
+    {
         $value = curl_exec($this->handle);
 
         $error_no = curl_errno($this->handle);
@@ -100,7 +105,8 @@ class Request implements CurlRequest
     /**
      * Alias of the curl_getinfo function
      */
-    public function getInfo($flag=null) {
+    public function getInfo($flag=null)
+    {
         if(isset($flag)) {
             return curl_getinfo($this->handle,$flag);
         } else {
@@ -115,7 +121,8 @@ class Request implements CurlRequest
      * @param resource $handle the curl handle
      * @param Request $request the Request object we're populating
      */
-    public function setMethod($method) {
+    public function setMethod($method)
+    {
         if (isset(static::$_methodOptionMap[$method])) {
             return $this->setOption(static::$_methodOptionMap[$method],true);
         } else {
@@ -123,7 +130,8 @@ class Request implements CurlRequest
         }
     }
 
-    public function __clone() {
+    public function __clone()
+    {
         $this->handle = curl_copy_handle($this->handle);
     }
 }

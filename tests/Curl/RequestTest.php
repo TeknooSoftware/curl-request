@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Zeroem\CurlBundle\Tests\Curl;
+namespace UniAlteri\Tests\Curl;
 
 use Zeroem\CurlBundle\Curl\Request;
 

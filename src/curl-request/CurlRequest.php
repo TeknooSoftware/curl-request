@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Zeroem\CurlBundle\Curl;
+namespace UniAlteri\Curl;
 
 interface CurlRequest
 {
