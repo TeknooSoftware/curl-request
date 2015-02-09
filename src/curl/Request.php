@@ -25,12 +25,12 @@ class Request implements CurlRequest
      *
      * @var array
      */
-    static private $_methodOptionMap = [
+    static private $_methodOptionMap = array(
         'GET'=>CURLOPT_HTTPGET,
         'POST'=>CURLOPT_POST,
         'HEAD'=>CURLOPT_NOBODY,
         'PUT'=>CURLOPT_PUT
-    ];
+    );
 
     /**
      * Instantiate a new cURL Request object
