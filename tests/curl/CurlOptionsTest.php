@@ -1,21 +1,46 @@
 <?php
-
-/*
- * (c) Darrell Hamilton <darrell.noice@gmail.com>
+/**
+ * Curl Request
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * LICENSE
+ *
+ * This source file is subject to the MIT license and the version 3 of the GPL3
+ * license that are bundled with this package in the folder licences
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to contact@uni-alteri.com so we can send you a copy immediately.
+ *
+ * @subpackage  Tests
+ * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
+ * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ * @link        http://teknoo.it/curl Project website
+ * @license     http://teknoo.it/curl/license/mit         MIT License
+ * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
+ * @author      Richard Déloge <r.deloge@uni-alteri.com>
+ * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ * @version     0.8.0
  */
 
 namespace UniAlteri\Tests\Curl;
 
-use UniAlteri\Curl\CurlOptions;
+use UniAlteri\Curl\Options;
 
-class CurlOptionsTest extends \PHPUnit_Framework_TestCase
+/**
+ * Class OptionsTest
+ *
+ * @package     CurlRequest
+ * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
+ * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ * @link        http://teknoo.it/curl Project website
+ * @license     http://teknoo.it/curl/license/mit         MIT License
+ * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
+ * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ */
+class OptionsTest extends \PHPUnit_Framework_TestCase
 {
     public function testIsValidOption() {
-        $this->assertTrue(CurlOptions::isValidOption(CURLOPT_RETURNTRANSFER));
-        $this->assertFalse(CurlOptions::isValidOption("herp derpity"));
+        $this->assertTrue(Options::isValidOption(CURLOPT_RETURNTRANSFER));
+        $this->assertFalse(Options::isValidOption("herp derpity"));
     }
 
     /**
@@ -23,14 +48,14 @@ class CurlOptionsTest extends \PHPUnit_Framework_TestCase
      * @expectedException InvalidArgumentException
      */
     public function testInvalidOptions($option, $value) {
-        CurlOptions::checkOptionValue($option, $value);
+        Options::checkOptionValue($option, $value);
     }
 
     /**
      * @dataProvider goodOptions
      */
     public function testValidOptions($option, $value) {
-        $this->assertTrue(CurlOptions::checkOptionValue($option,$value));
+        $this->assertTrue(Options::checkOptionValue($option,$value));
     }
 
     public function goodOptions() {
