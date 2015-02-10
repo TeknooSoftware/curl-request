@@ -19,8 +19,7 @@
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  * @version     0.8.0
  */
-
-namespace UniAlteri\Curl;
+namespace UniAlteri\curl;
 
 /**
  * Interface OptionsInterface
@@ -39,7 +38,7 @@ interface OptionsInterface
     /**
      * Determine whether or not the value passed is a valid cURL option
      *
-     * @param int $option An Integer Flag
+     * @param  int     $option An Integer Flag
      * @return boolean Whether or not the flag is a valid cURL option
      */
     public function isValidOption($option);
@@ -47,8 +46,8 @@ interface OptionsInterface
     /**
      * Check whether or not the value is a valid type for the given option
      *
-     * @param int $option An integer flag
-     * @param mixed $value the value to be set to the integer flag
+     * @param  int     $option An integer flag
+     * @param  mixed   $value  the value to be set to the integer flag
      * @return boolean Whether or not the value is of the correct type
      *
      * @throws \InvalidArgumentException if the $option _is_not_ a valid cURL option
@@ -58,9 +57,9 @@ interface OptionsInterface
     /**
      * Alias of the curl_setopt function
      * @link http://php.net/manual/function.curl-setopt.php
-     * @param resource $resource cUrl resource
-     * @param int $option Option defined in http://php.net/manual/function.curl-setopt.php
-     * @param mixed $value
+     * @param  resource                  $resource cUrl resource
+     * @param  int                       $option   Option defined in http://php.net/manual/function.curl-setopt.php
+     * @param  mixed                     $value
      * @return boolean
      * @throws \InvalidArgumentException if the option does not exist or if it is invalid
      */
@@ -69,8 +68,8 @@ interface OptionsInterface
     /**
      * Alias of the curl_setopt_array function
      * @link http://php.net/manual/function.curl-setopt-array.php
-     * @param resource $resource curl resource
-     * @param array $options defined in http://php.net/manual/function.curl-setopt-array.php
+     * @param  resource $resource curl resource
+     * @param  array    $options  defined in http://php.net/manual/function.curl-setopt-array.php
      * @return boolean
      */
     public function setOptionsValuesArray($resource, $options);

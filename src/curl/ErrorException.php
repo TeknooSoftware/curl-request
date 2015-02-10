@@ -19,8 +19,7 @@
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  * @version     0.8.0
  */
-
-namespace UniAlteri\Curl;
+namespace UniAlteri\curl;
 
 /**
  * Class ErrorException

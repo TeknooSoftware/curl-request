@@ -19,8 +19,7 @@
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  * @version     0.8.0
  */
-
-namespace UniAlteri\Curl;
+namespace UniAlteri\curl;
 
 /**
  * Class RequestGenerator
@@ -49,14 +48,14 @@ class RequestGenerator
 
     /**
      * @param Options $options
-     * @param array $arg
+     * @param array   $arg
      */
-    public function __construct(Options $options, $arg=array())
+    public function __construct(Options $options, $arg = array())
     {
         if (is_array($arg)) {
             $this->request = new Request($options);
             $this->request->setOptionArray($arg);
-        } else if($arg instanceof Request) {
+        } elseif ($arg instanceof Request) {
             $this->request = clone $arg;
         } else {
             if (is_object($arg)) {
@@ -86,4 +85,3 @@ class RequestGenerator
         return $this->options;
     }
 }
-

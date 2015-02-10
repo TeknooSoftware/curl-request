@@ -19,8 +19,7 @@
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  * @version     0.8.0
  */
-
-namespace UniAlteri\Curl;
+namespace UniAlteri\curl;
 
 /**
  * Class Options
@@ -172,7 +171,7 @@ class Options implements OptionsInterface
     /**
      * Determine whether or not the value passed is a valid cURL option
      *
-     * @param int $option An Integer Flag
+     * @param  int     $option An Integer Flag
      * @return boolean Whether or not the flag is a valid cURL option
      */
     public function isValidOption($option)
@@ -183,8 +182,8 @@ class Options implements OptionsInterface
     /**
      * Check whether or not the value is a valid type for the given option
      *
-     * @param int $option An integer flag
-     * @param mixed $value the value to be set to the integer flag
+     * @param  int     $option An integer flag
+     * @param  mixed   $value  the value to be set to the integer flag
      * @return boolean Whether or not the value is of the correct type
      *
      * @throws \InvalidArgumentException if the $option _is_not_ a valid cURL option
@@ -194,7 +193,7 @@ class Options implements OptionsInterface
         if ($this->isValidOption($option)) {
             $result = $this->checkType($value, $this->optionValueTypesList[$option]);
 
-            if(!$result && true === $throw) {
+            if (!$result && true === $throw) {
                 throw new \InvalidArgumentException('Invalid value for the given cURL option');
             }
 
@@ -207,15 +206,15 @@ class Options implements OptionsInterface
     /**
      * Alias of the curl_setopt function
      * @link http://php.net/manual/function.curl-setopt.php
-     * @param resource $resource cUrl resource
-     * @param int $option Option defined in http://php.net/manual/function.curl-setopt.php
-     * @param mixed $value
+     * @param  resource                  $resource cUrl resource
+     * @param  int                       $option   Option defined in http://php.net/manual/function.curl-setopt.php
+     * @param  mixed                     $value
      * @return boolean
      * @throws \InvalidArgumentException if the option does not exist or if it is invalid
      */
     public function setOptionValue($resource, $option, $value)
     {
-        if($this->checkOptionValue($option,$value)) {
+        if ($this->checkOptionValue($option, $value)) {
             return curl_setopt($resource, $option, $value);
         }
     }
@@ -223,13 +222,13 @@ class Options implements OptionsInterface
     /**
      * Alias of the curl_setopt_array function
      * @link http://php.net/manual/function.curl-setopt-array.php
-     * @param resource $resource curl resource
-     * @param array $options defined in http://php.net/manual/function.curl-setopt-array.php
+     * @param  resource $resource curl resource
+     * @param  array    $options  defined in http://php.net/manual/function.curl-setopt-array.php
      * @return boolean
      */
     public function setOptionsValuesArray($resource, $options)
     {
-        foreach($options as $option => $value) {
+        foreach ($options as $option => $value) {
             $this->checkOptionValue($option, $value);
         }
 
@@ -238,8 +237,8 @@ class Options implements OptionsInterface
 
     /**
      * Check if the type of $value is the attempted type by the option
-     * @param mixed $value
-     * @param string $type
+     * @param  mixed  $value
+     * @param  string $type
      * @return bool
      */
     protected function checkType($value, $type)
@@ -256,7 +255,6 @@ class Options implements OptionsInterface
                     break;
                 }
             }
-
         } else {
             //Scalar type
             $func = 'is_'.$type;

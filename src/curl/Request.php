@@ -19,8 +19,7 @@
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  * @version     0.8.0
  */
-
-namespace UniAlteri\Curl;
+namespace UniAlteri\curl;
 
 /**
  * Class Request
@@ -53,23 +52,23 @@ class Request implements RequestInterface
      * @var array
      */
     static protected $methodOptionMap = array(
-        'GET'=>CURLOPT_HTTPGET,
-        'POST'=>CURLOPT_POST,
-        'HEAD'=>CURLOPT_NOBODY,
-        'PUT'=>CURLOPT_PUT
+        'GET' => CURLOPT_HTTPGET,
+        'POST' => CURLOPT_POST,
+        'HEAD' => CURLOPT_NOBODY,
+        'PUT' => CURLOPT_PUT,
     );
 
     /**
      * Instantiate a new cURL Request object
      *
      * @param Options $Options Validator to check option used to perform the request
-     * @param string $url string URL to initialize the cURL handle with
+     * @param string  $url     string URL to initialize the cURL handle with
      */
-    public function __construct(Options $Options, $url=null)
+    public function __construct(Options $Options, $url = null)
     {
         $this->Options = $Options;
-        
-        if(isset($url)) {
+
+        if (isset($url)) {
             $this->handle = curl_init($url);
         } else {
             $this->handle = curl_init();
@@ -89,8 +88,8 @@ class Request implements RequestInterface
     /**
      * Alias of the curl_setopt function
      * @link http://php.net/manual/function.curl-setopt.php
-     * @param int $option Option defined in http://php.net/manual/function.curl-setopt.php
-     * @param mixed $value
+     * @param  int                       $option Option defined in http://php.net/manual/function.curl-setopt.php
+     * @param  mixed                     $value
      * @return boolean
      * @throws \InvalidArgumentException if the option does not exist or if it is invalid
      */
@@ -102,7 +101,7 @@ class Request implements RequestInterface
     /**
      * Alias of the curl_setopt_array function
      * @link http://php.net/manual/function.curl-setopt-array.php
-     * @param array $options defined in http://php.net/manual/function.curl-setopt-array.php
+     * @param  array   $options defined in http://php.net/manual/function.curl-setopt-array.php
      * @return boolean
      */
     public function setOptionArray(array $options)
@@ -122,7 +121,7 @@ class Request implements RequestInterface
      * Execute the cURL request
      *
      * @link http://php.net/manual/function.curl-exec.php
-     * @return mixed the results of curl_exec
+     * @return mixed          the results of curl_exec
      * @throws ErrorException
      */
     public function execute()
@@ -144,10 +143,10 @@ class Request implements RequestInterface
     /**
      * Alias of the curl_getinfo function
      * @link http://php.net/manual/function.curl-getinfo.php
-     * @param int $flag defined in http://php.net/manual/function.curl-getinfo.php
+     * @param  int          $flag defined in http://php.net/manual/function.curl-getinfo.php
      * @return string|array the results of curl_getinfo
      */
-    public function getInfo($flag=null)
+    public function getInfo($flag = null)
     {
         if (isset($flag)) {
             return curl_getinfo($this->handle, $flag);
@@ -160,15 +159,15 @@ class Request implements RequestInterface
      * Convenience method for setting the appropriate cURL options based on the desired
      * HTTP request method
      *
-     * @param string $method
+     * @param  string  $method
      * @return boolean
      */
     public function setMethod($method)
     {
         if (isset(static::$methodOptionMap[$method])) {
-            return $this->setOption(static::$methodOptionMap[$method],true);
+            return $this->setOption(static::$methodOptionMap[$method], true);
         } else {
-            return $this->setOption(CURLOPT_CUSTOMREQUEST,$method);
+            return $this->setOption(CURLOPT_CUSTOMREQUEST, $method);
         }
     }
 
@@ -180,4 +179,3 @@ class Request implements RequestInterface
         $this->handle = curl_copy_handle($this->handle);
     }
 }
-
