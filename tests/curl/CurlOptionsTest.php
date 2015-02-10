@@ -95,15 +95,22 @@ class OptionsTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider goodOptions
      */
-    public function testCheckOptionValueValidOptionsValue($option, $value) {
+    public function testCheckOptionValueValidOptionsValue($option, $value)
+    {
         $this->assertTrue($this->buildOptions()->checkOptionValue($option,$value));
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     */
     public function testSetOptionValueBadOptionValue()
     {
         $this->buildOptions()->setOptionValue($this->handle, CURLOPT_AUTOREFERER, 'bar');
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     */
     public function testSetOptionValueBadOptionName()
     {
         $this->buildOptions()->setOptionValue($this->handle, 'foo', 'bar');
@@ -114,11 +121,17 @@ class OptionsTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->buildOptions()->setOptionValue($this->handle, CURLOPT_AUTOREFERER,true));
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     */
     public function testSetOptionsValuesArrayBadOptionValue()
     {
         $this->buildOptions()->setOptionsValuesArray($this->handle, $this->badOptions());
     }
 
+    /**
+     * @expectedException \InvalidArgumentException
+     */
     public function testSetOptionsValuesArrayBadOptionName()
     {
         $this->buildOptions()->setOptionsValuesArray($this->handle, $this->badOptionsName());
@@ -126,7 +139,19 @@ class OptionsTest extends \PHPUnit_Framework_TestCase
 
     public function testSetOptionsValuesArrayGood()
     {
-        $this->assertTrue($this->buildOptions()->setOptionsValuesArray($this->handle, $this->goodOptions()));
+        $this->assertTrue(
+            $this->buildOptions()->setOptionsValuesArray(
+                $this->handle,
+                array(
+                    CURLOPT_AUTOREFERER => true,
+                    CURLOPT_BUFFERSIZE => 10,
+                    CURLOPT_CAINFO => 'a string',
+                    CURLOPT_HTTP200ALIASES => array(200,404,401),
+                    CURLOPT_POSTFIELDS => array('key'=>'value'),
+                    CURLOPT_POSTFIELDS => 'key=value'
+                )
+            )
+        );
     }
 
     /**
@@ -156,6 +181,7 @@ class OptionsTest extends \PHPUnit_Framework_TestCase
             array(CURLOPT_BUFFERSIZE,'derp'),
             array(CURLOPT_CAINFO,false),
             array(CURLOPT_HTTP200ALIASES,''),
+            array(CURLOPT_HTTP200ALIASES,new \stdClass()),
         );
     }
 

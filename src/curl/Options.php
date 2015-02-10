@@ -214,9 +214,8 @@ class Options implements OptionsInterface
      */
     public function setOptionValue($resource, $option, $value)
     {
-        if ($this->checkOptionValue($option, $value)) {
-            return curl_setopt($resource, $option, $value);
-        }
+        $this->checkOptionValue($option, $value);
+        return curl_setopt($resource, $option, $value);
     }
 
     /**
@@ -232,7 +231,7 @@ class Options implements OptionsInterface
             $this->checkOptionValue($option, $value);
         }
 
-        return curl_setopt_array($this->$resource, $options);
+        return curl_setopt_array($resource, $options);
     }
 
     /**
@@ -262,8 +261,6 @@ class Options implements OptionsInterface
             if (is_callable($func)) {
                 //Execute the php method to perform the check
                 $result = $func($value);
-            } else {
-                throw new \InvalidArgumentException('The type `'.$type.'` is not a valid type to check');
             }
         }
 
