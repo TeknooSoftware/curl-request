@@ -23,9 +23,8 @@
 namespace UniAlteri\Curl;
 
 /**
- * Class RequestGenerator
- * A service class for generating Curl\Request objects with an initial
- * set of CURLOPT_* options set
+ * Class ErrorException
+ * Default exception used in this library throwed when an error is encountered by Curl
  *
  * @package     CurlRequest
  * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
@@ -35,55 +34,6 @@ namespace UniAlteri\Curl;
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  */
-class RequestGenerator
+class ErrorException extends \RuntimeException
 {
-    /**
-     * @var Request
-     */
-    protected $request;
-
-    /**
-     * @var Options
-     */
-    protected $options;
-
-    /**
-     * @param Options $options
-     * @param array $arg
-     */
-    public function __construct(Options $options, $arg=array())
-    {
-        if (is_array($arg)) {
-            $this->request = new Request($options);
-            $this->request->setOptionArray($arg);
-        } else if($arg instanceof Request) {
-            $this->request = clone $arg;
-        } else {
-            if (is_object($arg)) {
-                $type = get_class($arg);
-            } else {
-                $type = gettype($arg);
-            }
-
-            throw new \LogicException(
-                'Unsupported argument type.  Expected array instance of Request. Got '.$type.'.'
-            );
-        }
-    }
-
-    /**
-     * Generate a Request object with preset options
-     *
-     * @return Request a cURL Request object
-     */
-    public function getRequest()
-    {
-        return clone $this->request;
-    }
-
-    public function getOptions()
-    {
-        return $this->options;
-    }
 }
-

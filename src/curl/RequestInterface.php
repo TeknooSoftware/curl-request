@@ -23,8 +23,8 @@
 namespace UniAlteri\Curl;
 
 /**
- * Class Request
- * An OO wrapper on the curl_* functions in PHP to manage and execute HTTP request via cUrl
+ * Interface RequestInterface
+ * Interface to define class to represent a request, aka a curl instance
  *
  * @package     CurlRequest
  * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
@@ -34,57 +34,14 @@ namespace UniAlteri\Curl;
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  */
-class Request implements RequestInterface
+interface RequestInterface
 {
-    /**
-     * the cURL handle resource for this request
-     * @var resource
-     */
-    protected $handle;
-
-    /**
-     * @var Options
-     */
-    protected $Options;
-
-    /**
-     * Map specific HTTP requests to their appropriate CURLOPT_* constant
-     *
-     * @var array
-     */
-    static protected $methodOptionMap = array(
-        'GET'=>CURLOPT_HTTPGET,
-        'POST'=>CURLOPT_POST,
-        'HEAD'=>CURLOPT_NOBODY,
-        'PUT'=>CURLOPT_PUT
-    );
-
-    /**
-     * Instantiate a new cURL Request object
-     *
-     * @param Options $Options Validator to check option used to perform the request
-     * @param string $url string URL to initialize the cURL handle with
-     */
-    public function __construct(Options $Options, $url=null)
-    {
-        $this->Options = $Options;
-        
-        if(isset($url)) {
-            $this->handle = curl_init($url);
-        } else {
-            $this->handle = curl_init();
-        }
-    }
-
     /**
      * Getter for the internal curl handle resource
      *
      * @return resource the curl handle
      */
-    public function getHandle()
-    {
-        return $this->handle;
-    }
+    public function getHandle();
 
     /**
      * Alias of the curl_setopt function
@@ -94,10 +51,7 @@ class Request implements RequestInterface
      * @return boolean
      * @throws \InvalidArgumentException if the option does not exist or if it is invalid
      */
-    public function setOption($option, $value)
-    {
-        return $this->Options->setOptionValue($this->getHandle(), $option, $value);
-    }
+    public function setOption($option, $value);
 
     /**
      * Alias of the curl_setopt_array function
@@ -105,18 +59,7 @@ class Request implements RequestInterface
      * @param array $options defined in http://php.net/manual/function.curl-setopt-array.php
      * @return boolean
      */
-    public function setOptionArray(array $options)
-    {
-        return $this->Options->setOptionsValuesArray($this->getHandle(), $options);
-    }
-
-    /**
-     * To free the resource at destruction
-     */
-    public function __destruct()
-    {
-        curl_close($this->handle);
-    }
+    public function setOptionArray(array $options);
 
     /**
      * Execute the cURL request
@@ -125,21 +68,7 @@ class Request implements RequestInterface
      * @return mixed the results of curl_exec
      * @throws ErrorException
      */
-    public function execute()
-    {
-        //Execute the request
-        $value = curl_exec($this->handle);
-
-        //Check if there are an error
-        $error_no = curl_errno($this->handle);
-
-        if (0 !== $error_no) {
-            //There are an error, throw an exception
-            throw new ErrorException(curl_error($this->handle), $error_no);
-        }
-
-        return $value;
-    }
+    public function execute();
 
     /**
      * Alias of the curl_getinfo function
@@ -147,14 +76,7 @@ class Request implements RequestInterface
      * @param int $flag defined in http://php.net/manual/function.curl-getinfo.php
      * @return string|array the results of curl_getinfo
      */
-    public function getInfo($flag=null)
-    {
-        if (isset($flag)) {
-            return curl_getinfo($this->handle, $flag);
-        } else {
-            return curl_getinfo($this->handle);
-        }
-    }
+    public function getInfo($flag=null);
 
     /**
      * Convenience method for setting the appropriate cURL options based on the desired
@@ -163,21 +85,5 @@ class Request implements RequestInterface
      * @param string $method
      * @return boolean
      */
-    public function setMethod($method)
-    {
-        if (isset(static::$methodOptionMap[$method])) {
-            return $this->setOption(static::$methodOptionMap[$method],true);
-        } else {
-            return $this->setOption(CURLOPT_CUSTOMREQUEST,$method);
-        }
-    }
-
-    /**
-     * To support cloning and clone the resource and not use the same.
-     */
-    public function __clone()
-    {
-        $this->handle = curl_copy_handle($this->handle);
-    }
+    public function setMethod($method);
 }
-
