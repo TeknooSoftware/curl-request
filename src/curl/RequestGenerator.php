@@ -47,21 +47,35 @@ class RequestGenerator
     protected $options;
 
     /**
-     * @param Options $options
-     * @param array   $arg
+     * @var null|array
      */
-    public function __construct(Options $options, $arg = array())
+    protected $startArgs = null;
+
+    /**
+     * @param OptionsInterface $options
+     * @param array            $args
+     */
+    public function __construct(OptionsInterface $options = null, $args = array())
     {
-        if (is_array($arg)) {
-            $this->request = new Request($options);
-            $this->request->setOptionArray($arg);
-        } elseif ($arg instanceof Request) {
-            $this->request = clone $arg;
+        //Build a default options manager
+        if (!$options instanceof OptionsInterface) {
+            $options = new Options();
+        }
+
+        if (is_array($args)) {
+            if (!empty($args)) {
+                //Service is started with initial configuration, register it to pass it when the first request
+                // will be required. Not create request object now to avoid to reserve unused resources
+                $this->startArgs = $args;
+            }
+        } elseif ($args instanceof RequestInterface) {
+            //Service is started with an existent request
+            $this->request = clone $args;
         } else {
-            if (is_object($arg)) {
-                $type = get_class($arg);
+            if (is_object($args)) {
+                $type = get_class($args);
             } else {
-                $type = gettype($arg);
+                $type = gettype($args);
             }
 
             throw new \LogicException(
@@ -71,17 +85,57 @@ class RequestGenerator
     }
 
     /**
+     * To define the original request to use as "model" in the service. It will be cloned at each call of getRequest()
+     * @param  RequestInterface $request
+     * @return $this
+     */
+    public function setRequest(RequestInterface $request)
+    {
+        $this->request = $request;
+
+        return $this;
+    }
+
+    /**
      * Generate a Request object with preset options
      *
      * @return Request a cURL Request object
      */
     public function getRequest()
     {
+        if (!$this->request instanceof RequestInterface) {
+            //Check if it is the first, call, create the request if needd
+            $this->request = new Request($this->getOptions());
+
+            if (!empty($this->startArgs)) {
+                //Apply initial configuration
+                $this->request->setOptionArray($this->startArgs);
+            }
+        }
+
+        //Return a clone to avoid update locale options
         return clone $this->request;
     }
 
+    /**
+     * Return the options manager user here
+     *
+     * @return Options
+     */
     public function getOptions()
     {
         return $this->options;
+    }
+
+    /**
+     * To change the options manager to use in this service
+     * @param  OptionsInterface $options
+     * @return $this
+     */
+    public function setOptions(OptionsInterface $options)
+    {
+        $this->options = $options;
+
+        return $this;
     }
 }
