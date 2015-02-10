@@ -38,6 +38,100 @@ use UniAlteri\Curl\Request;
  */
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
+    public function testGetInfoAll()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+        $this->assertTrue(is_array($request->getInfo()));
+    }
+
+    public function testGetInfoFlag()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+        $this->assertTrue(is_int($request->getInfo(CURLINFO_REDIRECT_COUNT)));
+    }
+
+    public function testSetMethodGet()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(CURLOPT_HTTPGET),
+                $this->equalTo(true)
+            );
+
+        $request->setMethod('GET');
+    }
+
+    public function testSetMethodHead()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(CURLOPT_NOBODY),
+                $this->equalTo(true)
+            );
+
+        $request->setMethod('HEAD');
+    }
+
+    public function testSetMethodPost()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(CURLOPT_POST),
+                $this->equalTo(true)
+            );
+
+        $request->setMethod('POST');
+    }
+
+    public function testSetMethodPut()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(CURLOPT_PUT),
+                $this->equalTo(true)
+            );
+
+        $request->setMethod('PUT');
+    }
+
+    public function testSetMethodCustom()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(CURLOPT_CUSTOMREQUEST),
+                $this->equalTo('fooBar')
+            );
+
+        $request->setMethod('fooBar');
+    }
+
     public function testClone()
     {
         $options = $this->getMock('UniAlteri\Curl\Options');
