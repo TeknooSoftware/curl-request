@@ -1,10 +1,9 @@
 {
     "name": "unialteri/curl-request",
     "type": "library",
-    "description": "Allows you to easily create and execute HTTP Requests with cURL. Fork from zeroem/curl-bundle",
+    "description": "This library allows you to easily create and execute HTTP Requests with cURL. Fork from zeroem/curl-bundle",
     "keywords": ["curl","library","http","request"],
-    "time": "2015-02-01",
-    "homepage": "http://teknoo.it/curl-request",
+    "homepage": "http://teknoo.it/curl",
     "license": ["MIT","GPL-3.0+"],
     "authors": [
         {
