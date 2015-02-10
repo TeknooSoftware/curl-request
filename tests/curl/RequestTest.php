@@ -38,8 +38,11 @@ use UniAlteri\Curl\Request;
  */
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
-    public function testClone() {
-        $request = new Request();
+    public function testClone()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+
+        $request = new Request($options);
         $clone = clone $request;
 
         $this->assertThat(

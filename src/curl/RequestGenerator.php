@@ -19,7 +19,7 @@
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  * @version     0.8.0
  */
-namespace UniAlteri\curl;
+namespace UniAlteri\Curl;
 
 /**
  * Class RequestGenerator
@@ -59,7 +59,9 @@ class RequestGenerator
     {
         //Build a default options manager
         if (!$options instanceof OptionsInterface) {
-            $options = new Options();
+            $this->options = new Options();
+        } else {
+            $this->options = $options;
         }
 
         if (is_array($args)) {

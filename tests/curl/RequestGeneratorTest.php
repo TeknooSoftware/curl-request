@@ -39,7 +39,8 @@ use UniAlteri\Curl\RequestGenerator;
  */
 class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSetAndUnsetOptions() {
+    public function testSetAndUnsetOptions()
+    {
         $generator = new RequestGenerator();
 
         $this->assertInstanceOf(
@@ -47,8 +48,10 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
             $generator->getRequest()
         );
 
-        $request = new Request();
-        $generator = new RequestGenerator($request);
+        $options = $this->getMock('UniAlteri\Curl\Options');
+
+        $request = new Request($options);
+        $generator = new RequestGenerator($options, $request);
 
         $this->assertInstanceOf(
             'UniAlteri\Curl\Request',

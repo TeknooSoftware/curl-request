@@ -19,7 +19,7 @@
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  * @version     0.8.0
  */
-namespace UniAlteri\curl;
+namespace UniAlteri\Curl;
 
 /**
  * Class Options
@@ -184,7 +184,7 @@ class Options implements OptionsInterface
      *
      * @param  int     $option An integer flag
      * @param  mixed   $value  the value to be set to the integer flag
-     * @return boolean Whether or not the value is of the correct type
+     * @return boolean $throw  Whether or not the value is of the correct type
      *
      * @throws \InvalidArgumentException if the $option _is_not_ a valid cURL option
      */
@@ -249,7 +249,7 @@ class Options implements OptionsInterface
             //Several types are available
             foreach ($type as $item) {
                 //Check each type
-                $result = $this>checkType($value, $item);
+                $result = $this->checkType($value, $item);
                 if (!empty($result)) {
                     //Good type found
                     break;

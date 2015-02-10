@@ -38,43 +38,138 @@ use UniAlteri\Curl\Options;
  */
 class OptionsTest extends \PHPUnit_Framework_TestCase
 {
-    public function testIsValidOption() {
-        $this->assertTrue(Options::isValidOption(CURLOPT_RETURNTRANSFER));
-        $this->assertFalse(Options::isValidOption("herp derpity"));
+    /**
+     * @var resource cUrl
+     */
+    protected $handle;
+
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->handle = curl_init();
+    }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+        curl_close($this->handle);
+    }
+
+    protected function buildOptions()
+    {
+        return new Options();
+    }
+
+    public function testIsValidOption()
+    {
+        $this->assertTrue($this->buildOptions()->isValidOption(CURLOPT_RETURNTRANSFER));
+        $this->assertFalse($this->buildOptions()->isValidOption('herp derpity'));
     }
 
     /**
      * @dataProvider badOptions
-     * @expectedException InvalidArgumentException
+     * @expectedException \InvalidArgumentException
      */
-    public function testInvalidOptions($option, $value) {
-        Options::checkOptionValue($option, $value);
+    public function testCheckOptionValueInvalidOptions($option, $value)
+    {
+        $this->buildOptions()->checkOptionValue($option, $value);
+    }
+
+    /**
+     * @dataProvider badOptionsName
+     * @expectedException \InvalidArgumentException
+     */
+    public function testCheckOptionValueInvalidOptionsBadName($option, $value)
+    {
+        $this->buildOptions()->checkOptionValue($option, $value);
+    }
+
+    /**
+     * @dataProvider badOptions
+     */
+    public function testCheckOptionValueInvalidOptionsNotThrows($option, $value)
+    {
+        $this->assertFalse($this->buildOptions()->checkOptionValue($option, $value, false));
     }
 
     /**
      * @dataProvider goodOptions
      */
-    public function testValidOptions($option, $value) {
-        $this->assertTrue(Options::checkOptionValue($option,$value));
+    public function testCheckOptionValueValidOptionsValue($option, $value) {
+        $this->assertTrue($this->buildOptions()->checkOptionValue($option,$value));
     }
 
-    public function goodOptions() {
+    public function testSetOptionValueBadOptionValue()
+    {
+        $this->buildOptions()->setOptionValue($this->handle, CURLOPT_AUTOREFERER, 'bar');
+    }
+
+    public function testSetOptionValueBadOptionName()
+    {
+        $this->buildOptions()->setOptionValue($this->handle, 'foo', 'bar');
+    }
+
+    public function testSetOptionValueGood()
+    {
+        $this->assertTrue($this->buildOptions()->setOptionValue($this->handle, CURLOPT_AUTOREFERER,true));
+    }
+
+    public function testSetOptionsValuesArrayBadOptionValue()
+    {
+        $this->buildOptions()->setOptionsValuesArray($this->handle, $this->badOptions());
+    }
+
+    public function testSetOptionsValuesArrayBadOptionName()
+    {
+        $this->buildOptions()->setOptionsValuesArray($this->handle, $this->badOptionsName());
+    }
+
+    public function testSetOptionsValuesArrayGood()
+    {
+        $this->assertTrue($this->buildOptions()->setOptionsValuesArray($this->handle, $this->goodOptions()));
+    }
+
+    /**
+     * Data provider for testValidOptions
+     * @return array
+     */
+    public function goodOptions()
+    {
         return array(
             array(CURLOPT_AUTOREFERER,true),
             array(CURLOPT_BUFFERSIZE,10),
-            array(CURLOPT_CAINFO,"a string"),
+            array(CURLOPT_CAINFO,'a string'),
             array(CURLOPT_HTTP200ALIASES,array(200,404,401)),
-            array(CURLOPT_POSTFIELDS,array("key"=>"value")),
-            array(CURLOPT_POSTFIELDS,"key=value")
+            array(CURLOPT_POSTFIELDS,array('key'=>'value')),
+            array(CURLOPT_POSTFIELDS,'key=value')
         );
     }
 
-    public function badOptions() {
+    /**
+     * Data provider for testInvalidOptions
+     * @return array
+     */
+    public function badOptions()
+    {
         return array(
-            array(CURLOPT_AUTOREFERER,"derp"),
-            array(CURLOPT_BUFFERSIZE,"derp"),
+            array(CURLOPT_AUTOREFERER,'derp'),
+            array(CURLOPT_BUFFERSIZE,'derp'),
             array(CURLOPT_CAINFO,false),
-            array(CURLOPT_HTTP200ALIASES,""),
+            array(CURLOPT_HTTP200ALIASES,''),
+        );
+    }
+
+    /**
+     * Data provider for testInvalidOptions
+     * @return array
+     */
+    public function badOptionsName()
+    {
+        return array(
+            array('Bad','derp'),
+            array(CURLOPT_BUFFERSIZE,'derp'),
+            array(CURLOPT_CAINFO,false),
+            array(CURLOPT_HTTP200ALIASES,''),
         );
     }
 }
