@@ -47,15 +47,15 @@ class RequestGenerator
     protected $options;
 
     /**
-     * @var null|array
+     * @var null|string
      */
     protected $startArgs = null;
 
     /**
      * @param OptionsInterface $options
-     * @param array            $args
+     * @param string           $args
      */
-    public function __construct(OptionsInterface $options = null, $args = array())
+    public function __construct(OptionsInterface $options = null, $args = '')
     {
         //Build a default options manager
         if (!$options instanceof OptionsInterface) {
@@ -64,7 +64,7 @@ class RequestGenerator
             $this->options = $options;
         }
 
-        if (is_array($args)) {
+        if (is_string($args)) {
             if (!empty($args)) {
                 //Service is started with initial configuration, register it to pass it when the first request
                 // will be required. Not create request object now to avoid to reserve unused resources
@@ -111,7 +111,7 @@ class RequestGenerator
 
             if (!empty($this->startArgs)) {
                 //Apply initial configuration
-                $this->request->setOptionArray($this->startArgs);
+                $this->request->setUrl($this->startArgs);
             }
         }
 

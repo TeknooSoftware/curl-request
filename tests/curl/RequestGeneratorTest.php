@@ -39,7 +39,111 @@ use UniAlteri\Curl\RequestGenerator;
  */
 class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSetAndUnsetOptions()
+    /**
+     * @expectedException \LogicException
+     */
+    public function testConstructBadObject()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        new RequestGenerator($options, new \stdClass());
+    }
+
+    /**
+     * @expectedException \LogicException
+     */
+    public function testConstructBadType()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        new RequestGenerator($options, false);
+    }
+
+    public function testGetRequest()
+    {
+        $generator = new RequestGenerator();
+
+        $this->assertInstanceOf(
+            'UniAlteri\Curl\Request',
+            $generator->getRequest()
+        );
+
+        $options = $this->getMock('UniAlteri\Curl\Options');
+
+        $generator = new RequestGenerator($options);
+
+        $request1 = $generator->getRequest();
+
+        $this->assertInstanceOf(
+            'UniAlteri\Curl\Request',
+            $request1
+        );
+
+        $this->assertNotEquals(
+            $request1,
+            $generator->getRequest()
+        );
+    }
+
+    public function testGetRequestNoOption()
+    {
+        $generator = new RequestGenerator();
+
+        $this->assertInstanceOf(
+            'UniAlteri\Curl\Request',
+            $generator->getRequest()
+        );
+
+        $generator = new RequestGenerator();
+
+        $request1 = $generator->getRequest();
+
+        $this->assertInstanceOf(
+            'UniAlteri\Curl\Request',
+            $request1
+        );
+
+        $this->assertNotEquals(
+            $request1,
+            $generator->getRequest()
+        );
+    }
+
+    public function testGetRequestWithArgs()
+    {
+        $generator = new RequestGenerator();
+
+        $this->assertInstanceOf(
+            'UniAlteri\Curl\Request',
+            $generator->getRequest()
+        );
+
+        $options = $this->getMock('UniAlteri\Curl\Options');
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->willReturnCallback(
+                function ($resource, $name, $value) {
+                    $this->assertNotEmpty($resource);
+                    $this->assertEquals(CURLOPT_URL, $name);
+                    $this->assertEquals('http://teknoo.it', $value);
+                }
+            );
+
+        $generator = new RequestGenerator($options, 'http://teknoo.it');
+
+        $request1 = $generator->getRequest();
+
+        $this->assertInstanceOf(
+            'UniAlteri\Curl\Request',
+            $request1
+        );
+
+        $this->assertNotEquals(
+            $request1,
+            $generator->getRequest()
+        );
+    }
+
+    public function testGetRequestGenerated()
     {
         $generator = new RequestGenerator();
 
@@ -62,5 +166,80 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
             $request,
             $generator->getRequest()
         );
+    }
+
+    public function testSetRequest()
+    {
+        $generator = new RequestGenerator();
+
+        $this->assertInstanceOf(
+            'UniAlteri\Curl\Request',
+            $generator->getRequest()
+        );
+
+        $options = $this->getMock('UniAlteri\Curl\Options');
+
+        $request = new Request($options);
+        $generator = new RequestGenerator($options, $request);
+
+        $this->assertInstanceOf(
+            'UniAlteri\Curl\Request',
+            $generator->getRequest()
+        );
+
+        $request2 = new Request($options);
+        $generator->setRequest($request2);
+
+        $this->assertNotEquals(
+            $request2,
+            $generator->getRequest()
+        );
+    }
+
+    public function testGetOptionsNotDefined()
+    {
+        $generator = new RequestGenerator();
+
+        $this->assertInstanceOf(
+            'UniAlteri\Curl\Request',
+            $generator->getRequest()
+        );
+
+        $generator = new RequestGenerator();
+        $this->assertInstanceOf('UniAlteri\Curl\Options', $generator->getOptions());
+    }
+
+    public function testGetOptions()
+    {
+        $generator = new RequestGenerator();
+
+        $this->assertInstanceOf(
+            'UniAlteri\Curl\Request',
+            $generator->getRequest()
+        );
+
+        $options = $this->getMock('UniAlteri\Curl\Options');
+
+        $generator = new RequestGenerator($options);
+        $this->assertSame($options, $generator->getOptions());
+    }
+
+    public function testSetOptions()
+    {
+        $generator = new RequestGenerator();
+
+        $this->assertInstanceOf(
+            'UniAlteri\Curl\Request',
+            $generator->getRequest()
+        );
+
+        $options = $this->getMock('UniAlteri\Curl\Options');
+
+        $generator = new RequestGenerator($options);
+        $this->assertSame($options, $generator->getOptions());
+
+        $options2 = $this->getMock('UniAlteri\Curl\Options');
+        $generator->setOptions($options2);
+        $this->assertSame($options2, $generator->getOptions());
     }
 }
