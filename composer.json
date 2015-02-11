@@ -31,8 +31,8 @@
     },
     "autoload": {
         "psr-4": {
-            "UniAlteri\\Curl\\": ["src/curl/"],
-            "UniAlteri\\Tests\\Curl\\": ["tests/curl/"]
+            "UniAlteri\\Curl\\": ["src/Curl/"],
+            "UniAlteri\\Tests\\Curl\\": ["tests/Curl/"]
         }
     },
     "archive": {

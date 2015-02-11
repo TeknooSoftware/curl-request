@@ -11,7 +11,7 @@
         colors="true">
     <testsuites>
         <testsuite name="UniAltery/curl-request Test Suite">
-            <directory>tests/curl</directory>
+            <directory>tests/Curl</directory>
         </testsuite>
     </testsuites>
 

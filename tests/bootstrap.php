@@ -19,7 +19,6 @@
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  * @version     0.8.0
  */
-
 defined('RUN_CLI_MODE')
     || define('RUN_CLI_MODE', true);
 

@@ -215,6 +215,7 @@ class Options implements OptionsInterface
     public function setOptionValue($resource, $option, $value)
     {
         $this->checkOptionValue($option, $value);
+
         return curl_setopt($resource, $option, $value);
     }
 

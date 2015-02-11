@@ -20,7 +20,6 @@
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  * @version     0.8.0
  */
-
 namespace UniAlteri\Tests\Curl;
 
 use UniAlteri\Curl\ErrorException;
@@ -84,7 +83,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 $this->equalTo(array('foo' => 'bar'))
             );
 
-        $this->assertSame($request, $request->setOptionArray(array('foo'=>'bar')));
+        $this->assertSame($request, $request->setOptionArray(array('foo' => 'bar')));
     }
 
     /**
@@ -294,4 +293,3 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-

@@ -20,7 +20,6 @@
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  * @version     0.8.0
  */
-
 namespace UniAlteri\Tests\Curl;
 
 use UniAlteri\Curl\Options;
@@ -36,7 +35,7 @@ use UniAlteri\Curl\Options;
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  */
-class OptionsTest extends \PHPUnit_Framework_TestCase
+class CurlOptionsTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var resource cUrl
@@ -97,7 +96,7 @@ class OptionsTest extends \PHPUnit_Framework_TestCase
      */
     public function testCheckOptionValueValidOptionsValue($option, $value)
     {
-        $this->assertTrue($this->buildOptions()->checkOptionValue($option,$value));
+        $this->assertTrue($this->buildOptions()->checkOptionValue($option, $value));
     }
 
     /**
@@ -118,7 +117,7 @@ class OptionsTest extends \PHPUnit_Framework_TestCase
 
     public function testSetOptionValueGood()
     {
-        $this->assertTrue($this->buildOptions()->setOptionValue($this->handle, CURLOPT_AUTOREFERER,true));
+        $this->assertTrue($this->buildOptions()->setOptionValue($this->handle, CURLOPT_AUTOREFERER, true));
     }
 
     /**
@@ -146,9 +145,9 @@ class OptionsTest extends \PHPUnit_Framework_TestCase
                     CURLOPT_AUTOREFERER => true,
                     CURLOPT_BUFFERSIZE => 10,
                     CURLOPT_CAINFO => 'a string',
-                    CURLOPT_HTTP200ALIASES => array(200,404,401),
-                    CURLOPT_POSTFIELDS => array('key'=>'value'),
-                    CURLOPT_POSTFIELDS => 'key=value'
+                    CURLOPT_HTTP200ALIASES => array(200, 404, 401),
+                    CURLOPT_POSTFIELDS => array('key' => 'value'),
+                    CURLOPT_POSTFIELDS => 'key=value',
                 )
             )
         );
@@ -165,8 +164,8 @@ class OptionsTest extends \PHPUnit_Framework_TestCase
             array(CURLOPT_BUFFERSIZE,10),
             array(CURLOPT_CAINFO,'a string'),
             array(CURLOPT_HTTP200ALIASES,array(200,404,401)),
-            array(CURLOPT_POSTFIELDS,array('key'=>'value')),
-            array(CURLOPT_POSTFIELDS,'key=value')
+            array(CURLOPT_POSTFIELDS,array('key' => 'value')),
+            array(CURLOPT_POSTFIELDS,'key=value'),
         );
     }
 

@@ -55,7 +55,7 @@ interface RequestInterface
     /**
      * Alias of the curl_setopt_array function
      * @link http://php.net/manual/function.curl-setopt-array.php
-     * @param  array   $options defined in http://php.net/manual/function.curl-setopt-array.php
+     * @param  array $options defined in http://php.net/manual/function.curl-setopt-array.php
      * @return $this
      */
     public function setOptionArray(array $options);
@@ -71,14 +71,14 @@ interface RequestInterface
 
     /**
      * To return the transfer as a string of the return value of execute() instead of outputting it out directly.
-     * @param boolean $enable
+     * @param  boolean $enable
      * @return $this
      */
     public function setReturnValue($enable);
 
     /**
      * Method to define url to call
-     * @param string $url
+     * @param  string $url
      * @return $this
      */
     public function setUrl($url);
@@ -95,7 +95,7 @@ interface RequestInterface
      * Convenience method for setting the appropriate cURL options based on the desired
      * HTTP request method
      *
-     * @param  string  $method
+     * @param  string $method
      * @return $this
      */
     public function setMethod($method);
