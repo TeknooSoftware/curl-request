@@ -23,6 +23,7 @@
 
 namespace UniAlteri\Tests\Curl;
 
+use UniAlteri\Curl\ErrorException;
 use UniAlteri\Curl\Request;
 
 /**
@@ -38,6 +39,152 @@ use UniAlteri\Curl\Request;
  */
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
+    public function testConstructWithUrl()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->willReturnCallback(
+                function ($resource, $name, $value) {
+                    $this->assertNotEmpty($resource);
+                    $this->assertEquals(CURLOPT_URL, $name);
+                    $this->assertEquals('http://teknoo.it', $value);
+                }
+            );
+
+        $request = new Request($options, 'http://teknoo.it');
+    }
+
+    public function testSetOption()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(CURLOPT_URL),
+                $this->equalTo('http://teknoo.it')
+            );
+
+        $this->assertSame($request, $request->setOption(CURLOPT_URL, 'http://teknoo.it'));
+    }
+
+    public function testSetOptionArray()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionsValuesArray')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(array('foo' => 'bar'))
+            );
+
+        $this->assertSame($request, $request->setOptionArray(array('foo'=>'bar')));
+    }
+
+    /**
+     * @expectedException UniAlteri\Curl\ErrorException
+     */
+    public function testExecuteError()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(CURLOPT_URL),
+                $this->equalTo('http://badurl')
+            )->willReturnCallback(
+                function ($resource, $option, $string) {
+                    curl_setopt($resource, $option, $string);
+                    curl_setopt($resource, CURLOPT_RETURNTRANSFER, true);
+                }
+            );
+
+        $request->setOption(CURLOPT_URL, 'http://badurl');
+        $request->execute();
+    }
+
+    public function testExecute()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(CURLOPT_URL),
+                $this->equalTo('http://teknoo.it')
+            )->willReturnCallback(
+                function ($resource, $option, $string) {
+                    curl_setopt($resource, $option, $string);
+                    curl_setopt($resource, CURLOPT_RETURNTRANSFER, true);
+                }
+            );
+
+        $request->setOption(CURLOPT_URL, 'http://teknoo.it');
+        $result = $request->execute();
+
+        $this->assertNotEmpty($result);
+        $this->assertTrue(is_string($result));
+    }
+
+    public function testSetReturnValueEnable()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(CURLOPT_RETURNTRANSFER),
+                $this->equalTo(true)
+            );
+
+        $this->assertEquals($request, $request->setReturnValue(true));
+    }
+
+    public function testSetReturnValueDisable()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(CURLOPT_RETURNTRANSFER),
+                $this->equalTo(false)
+            );
+
+        $this->assertEquals($request, $request->setReturnValue(false));
+    }
+
+    public function testSetUrl()
+    {
+        $options = $this->getMock('UniAlteri\Curl\Options');
+        $request = new Request($options);
+
+        $options->expects($this->once())
+            ->method('setOptionValue')
+            ->with(
+                $this->equalTo($request->getHandle()),
+                $this->equalTo(CURLOPT_URL),
+                $this->equalTo('http://teknoo.it')
+            );
+
+        $this->assertEquals($request, $request->setUrl('http://teknoo.it'));
+    }
+
     public function testGetInfoAll()
     {
         $options = $this->getMock('UniAlteri\Curl\Options');
@@ -65,7 +212,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 $this->equalTo(true)
             );
 
-        $request->setMethod('GET');
+        $this->assertSame($request, $request->setMethod('GET'));
     }
 
     public function testSetMethodHead()
@@ -81,7 +228,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 $this->equalTo(true)
             );
 
-        $request->setMethod('HEAD');
+        $this->assertSame($request, $request->setMethod('HEAD'));
     }
 
     public function testSetMethodPost()
@@ -97,7 +244,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 $this->equalTo(true)
             );
 
-        $request->setMethod('POST');
+        $this->assertSame($request, $request->setMethod('POST'));
     }
 
     public function testSetMethodPut()
@@ -113,7 +260,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 $this->equalTo(true)
             );
 
-        $request->setMethod('PUT');
+        $this->assertSame($request, $request->setMethod('PUT'));
     }
 
     public function testSetMethodCustom()
@@ -129,7 +276,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 $this->equalTo('fooBar')
             );
 
-        $request->setMethod('fooBar');
+        $this->assertSame($request, $request->setMethod('fooBar'));
     }
 
     public function testClone()

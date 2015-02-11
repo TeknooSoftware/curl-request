@@ -44,7 +44,7 @@ class Request implements RequestInterface
     /**
      * @var Options
      */
-    protected $Options;
+    protected $options;
 
     /**
      * Map specific HTTP requests to their appropriate CURLOPT_* constant
@@ -66,12 +66,12 @@ class Request implements RequestInterface
      */
     public function __construct(Options $Options, $url = null)
     {
-        $this->Options = $Options;
+        $this->options = $Options;
+
+        $this->handle = curl_init();
 
         if (isset($url)) {
-            $this->handle = curl_init($url);
-        } else {
-            $this->handle = curl_init();
+            $this->setUrl($url);
         }
     }
 
@@ -90,23 +90,27 @@ class Request implements RequestInterface
      * @link http://php.net/manual/function.curl-setopt.php
      * @param  int                       $option Option defined in http://php.net/manual/function.curl-setopt.php
      * @param  mixed                     $value
-     * @return boolean
+     * @return $this
      * @throws \InvalidArgumentException if the option does not exist or if it is invalid
      */
     public function setOption($option, $value)
     {
-        return $this->Options->setOptionValue($this->getHandle(), $option, $value);
+        $this->options->setOptionValue($this->getHandle(), $option, $value);
+
+        return $this;
     }
 
     /**
      * Alias of the curl_setopt_array function
      * @link http://php.net/manual/function.curl-setopt-array.php
      * @param  array   $options defined in http://php.net/manual/function.curl-setopt-array.php
-     * @return boolean
+     * @return $this
      */
     public function setOptionArray(array $options)
     {
-        return $this->Options->setOptionsValuesArray($this->getHandle(), $options);
+        $this->options->setOptionsValuesArray($this->getHandle(), $options);
+
+        return $this;
     }
 
     /**
@@ -141,6 +145,34 @@ class Request implements RequestInterface
     }
 
     /**
+     * To return the transfer as a string of the return value of execute() instead of outputting it out directly.
+     * @param boolean $enable
+     * @return $this
+     */
+    public function setReturnValue($enable)
+    {
+        if (!empty($enable)) {
+            $this->setOption(CURLOPT_RETURNTRANSFER, true);
+        } else {
+            $this->setOption(CURLOPT_RETURNTRANSFER, false);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Method to define url to call
+     * @param string $url
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        $this->setOption(CURLOPT_URL, $url);
+
+        return $this;
+    }
+
+    /**
      * Alias of the curl_getinfo function
      * @link http://php.net/manual/function.curl-getinfo.php
      * @param  int          $flag defined in http://php.net/manual/function.curl-getinfo.php
@@ -160,15 +192,17 @@ class Request implements RequestInterface
      * HTTP request method
      *
      * @param  string  $method
-     * @return boolean
+     * @return $this
      */
     public function setMethod($method)
     {
         if (isset(static::$methodOptionMap[$method])) {
-            return $this->setOption(static::$methodOptionMap[$method], true);
+            $this->setOption(static::$methodOptionMap[$method], true);
         } else {
-            return $this->setOption(CURLOPT_CUSTOMREQUEST, $method);
+            $this->setOption(CURLOPT_CUSTOMREQUEST, $method);
         }
+
+        return $this;
     }
 
     /**

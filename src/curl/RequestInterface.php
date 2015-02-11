@@ -47,7 +47,7 @@ interface RequestInterface
      * @link http://php.net/manual/function.curl-setopt.php
      * @param  int                       $option Option defined in http://php.net/manual/function.curl-setopt.php
      * @param  mixed                     $value
-     * @return boolean
+     * @return $this
      * @throws \InvalidArgumentException if the option does not exist or if it is invalid
      */
     public function setOption($option, $value);
@@ -56,7 +56,7 @@ interface RequestInterface
      * Alias of the curl_setopt_array function
      * @link http://php.net/manual/function.curl-setopt-array.php
      * @param  array   $options defined in http://php.net/manual/function.curl-setopt-array.php
-     * @return boolean
+     * @return $this
      */
     public function setOptionArray(array $options);
 
@@ -68,6 +68,20 @@ interface RequestInterface
      * @throws ErrorException
      */
     public function execute();
+
+    /**
+     * To return the transfer as a string of the return value of execute() instead of outputting it out directly.
+     * @param boolean $enable
+     * @return $this
+     */
+    public function setReturnValue($enable);
+
+    /**
+     * Method to define url to call
+     * @param string $url
+     * @return $this
+     */
+    public function setUrl($url);
 
     /**
      * Alias of the curl_getinfo function
@@ -82,7 +96,7 @@ interface RequestInterface
      * HTTP request method
      *
      * @param  string  $method
-     * @return boolean
+     * @return $this
      */
     public function setMethod($method);
 }
