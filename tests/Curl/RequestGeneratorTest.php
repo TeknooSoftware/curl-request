@@ -117,13 +117,19 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
 
         $options = $this->getMock('UniAlteri\Curl\Options');
 
-        $options->expects($this->once())
+        $counter = 0;
+        $options->expects($this->exactly(2))
             ->method('setOptionValue')
             ->willReturnCallback(
-                function ($resource, $name, $value) {
+                function ($resource, $name, $value) use (&$counter) {
                     $this->assertNotEmpty($resource);
-                    $this->assertEquals(CURLOPT_URL, $name);
-                    $this->assertEquals('http://teknoo.it', $value);
+                    if (0 == $counter++) {
+                        $this->assertEquals(CURLOPT_RETURNTRANSFER, $name);
+                        $this->assertTrue($value);
+                    } else {
+                        $this->assertEquals(CURLOPT_URL, $name);
+                        $this->assertEquals('http://teknoo.it', $value);
+                    }
                 }
             );
 

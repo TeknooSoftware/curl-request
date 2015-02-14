@@ -108,6 +108,7 @@ class RequestGenerator
         if (!$this->request instanceof RequestInterface) {
             //Check if it is the first, call, create the request if needd
             $this->request = new Request($this->getOptions());
+            $this->request->setReturnValue(true);
 
             if (!empty($this->startArgs)) {
                 //Apply initial configuration
