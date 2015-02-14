@@ -5,7 +5,7 @@ This library has been designed around three components :
 
 - The request object, implementing `UniAlteri\Curl\RequestInterface` to perform requests via cUrl.
 - The generator, to create new instances of requests.
-- The option manger, implementing `UniAlteri\Curl\OptionsInterface` to manage, check and apply selected options on cUrl sessions.
+- The option manager, implementing `UniAlteri\Curl\OptionsInterface` to manage, check and apply selected options on cUrl sessions.
  There are only one instance by generator.
 
 ##Create and execute a request
