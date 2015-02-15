@@ -12,7 +12,7 @@ Quick How-to to learn how use this library : [Startup](docs/quick-startup.md).
 
 API Documentation
 -----------------
-Generated documentation from the library with PhpDocumentor : [Open](https://cdn.rawgit.com/UniAlteri/states/master/docs/api/index.html).
+Generated documentation from the library with PhpDocumentor : [Open](https://cdn.rawgit.com/UniAlteri/curl-request/master/docs/api/index.html).
 
 Contribute :)
 -------------
