@@ -23,8 +23,6 @@ This library requires :
     * PHP 5.4+
     * cUrl extension
 
-Although highly recommended, Composer is not needed, this library can be used with its own psr0 autoloader.
-
 API Documentation
 -----------------
 Generated documentation from the library with PhpDocumentor : [Open](https://cdn.rawgit.com/UniAlteri/curl-request/master/docs/api/index.html).
