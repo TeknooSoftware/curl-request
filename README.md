@@ -10,9 +10,33 @@ Quick startup
 -------------
 Quick How-to to learn how use this library : [Startup](docs/quick-startup.md).
 
+Installation
+------------
+To install this library with composer, run this command :
+
+    composer require unialteri/curl-request
+
+Requirements
+------------
+This library requires :
+
+    * PHP 5.4+
+    * cUrl extension
+
+Although highly recommended, Composer is not needed, this library can be used with its own psr0 autoloader.
+
 API Documentation
 -----------------
 Generated documentation from the library with PhpDocumentor : [Open](https://cdn.rawgit.com/UniAlteri/curl-request/master/docs/api/index.html).
+
+Credits
+-------
+Richard Déloge - <r.deloge@uni-alteri.com> - Lead developer.
+Uni Alteri - <http://agence.net.ua> - <http://teknoo.it>
+
+License
+-------
+States is licensed under the MIT and GPL3+ Licenses - see the licenses folder for details
 
 Contribute :)
 -------------
