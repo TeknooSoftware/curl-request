@@ -17,7 +17,7 @@
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Richard Déloge <r.deloge@uni-alteri.com>
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
- * @version     0.8.0
+ * @version     0.8.1
  */
 namespace UniAlteri\Curl;
 
