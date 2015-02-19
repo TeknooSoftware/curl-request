@@ -1,6 +1,6 @@
 <?php
 /**
- * Curl Request
+ * Curl Request.
  *
  * LICENSE
  *
@@ -10,28 +10,32 @@
  * obtain it through the world-wide-web, please send an email
  * to contact@uni-alteri.com so we can send you a copy immediately.
  *
- * @subpackage  Tests
  * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @link        http://teknoo.it/curl Project website
+ *
  * @license     http://teknoo.it/curl/license/mit         MIT License
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Richard Déloge <r.deloge@uni-alteri.com>
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @version     0.8.0
  */
+
 namespace UniAlteri\Tests\Curl;
 
 use UniAlteri\Curl\Request;
 use UniAlteri\Curl\RequestGenerator;
 
 /**
- * Class RequestGeneratorTest
+ * Class RequestGeneratorTest.
  *
- * @package     CurlRequest
  * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @link        http://teknoo.it/curl Project website
+ *
  * @license     http://teknoo.it/curl/license/mit         MIT License
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)

@@ -1,6 +1,6 @@
 <?php
 /**
- * Curl Request
+ * Curl Request.
  *
  * LICENSE
  *
@@ -12,24 +12,29 @@
  *
  * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @link        http://teknoo.it/curl Project website
+ *
  * @license     http://teknoo.it/curl/license/mit         MIT License
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Richard Déloge <r.deloge@uni-alteri.com>
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @version     0.8.0
  */
+
 namespace UniAlteri\Curl;
 
 /**
  * Class RequestGenerator
  * A service class for generating Curl\Request objects with an initial
- * set of CURLOPT_* options set
+ * set of CURLOPT_* options set.
  *
- * @package     CurlRequest
  * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @link        http://teknoo.it/curl Project website
+ *
  * @license     http://teknoo.it/curl/license/mit         MIT License
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
@@ -87,8 +92,10 @@ class RequestGenerator
     }
 
     /**
-     * To define the original request to use as "model" in the service. It will be cloned at each call of getRequest()
-     * @param  RequestInterface $request
+     * To define the original request to use as "model" in the service. It will be cloned at each call of getRequest().
+     *
+     * @param RequestInterface $request
+     *
      * @return $this
      */
     public function setRequest(RequestInterface $request)
@@ -99,7 +106,7 @@ class RequestGenerator
     }
 
     /**
-     * Generate a Request object with preset options
+     * Generate a Request object with preset options.
      *
      * @return Request a cURL Request object
      */
@@ -121,7 +128,7 @@ class RequestGenerator
     }
 
     /**
-     * Return the options manager user here
+     * Return the options manager user here.
      *
      * @return Options
      */
@@ -131,8 +138,10 @@ class RequestGenerator
     }
 
     /**
-     * To change the options manager to use in this service
-     * @param  OptionsInterface $options
+     * To change the options manager to use in this service.
+     *
+     * @param OptionsInterface $options
+     *
      * @return $this
      */
     public function setOptions(OptionsInterface $options)

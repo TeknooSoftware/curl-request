@@ -1,6 +1,6 @@
 <?php
 /**
- * Curl Request
+ * Curl Request.
  *
  * LICENSE
  *
@@ -12,23 +12,28 @@
  *
  * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @link        http://teknoo.it/curl Project website
+ *
  * @license     http://teknoo.it/curl/license/mit         MIT License
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Richard Déloge <r.deloge@uni-alteri.com>
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @version     0.8.0
  */
+
 namespace UniAlteri\Curl;
 
 /**
  * Interface RequestInterface
- * Interface to define class to represent a request, aka a curl instance
+ * Interface to define class to represent a request, aka a curl instance.
  *
- * @package     CurlRequest
  * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @link        http://teknoo.it/curl Project website
+ *
  * @license     http://teknoo.it/curl/license/mit         MIT License
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
@@ -36,66 +41,83 @@ namespace UniAlteri\Curl;
 interface RequestInterface
 {
     /**
-     * Getter for the internal curl handle resource
+     * Getter for the internal curl handle resource.
      *
      * @return resource the curl handle
      */
     public function getHandle();
 
     /**
-     * Alias of the curl_setopt function
+     * Alias of the curl_setopt function.
+     *
      * @link http://php.net/manual/function.curl-setopt.php
-     * @param  int                       $option Option defined in http://php.net/manual/function.curl-setopt.php
-     * @param  mixed                     $value
+     *
+     * @param int   $option Option defined in http://php.net/manual/function.curl-setopt.php
+     * @param mixed $value
+     *
      * @return $this
+     *
      * @throws \InvalidArgumentException if the option does not exist or if it is invalid
      */
     public function setOption($option, $value);
 
     /**
-     * Alias of the curl_setopt_array function
+     * Alias of the curl_setopt_array function.
+     *
      * @link http://php.net/manual/function.curl-setopt-array.php
-     * @param  array $options defined in http://php.net/manual/function.curl-setopt-array.php
+     *
+     * @param array $options defined in http://php.net/manual/function.curl-setopt-array.php
+     *
      * @return $this
      */
     public function setOptionArray(array $options);
 
     /**
-     * Execute the cURL request
+     * Execute the cURL request.
      *
      * @link http://php.net/manual/function.curl-exec.php
-     * @return mixed          the results of curl_exec
+     *
+     * @return mixed the results of curl_exec
+     *
      * @throws ErrorException
      */
     public function execute();
 
     /**
      * To return the transfer as a string of the return value of execute() instead of outputting it out directly.
-     * @param  boolean $enable
+     *
+     * @param boolean $enable
+     *
      * @return $this
      */
     public function setReturnValue($enable);
 
     /**
-     * Method to define url to call
-     * @param  string $url
+     * Method to define url to call.
+     *
+     * @param string $url
+     *
      * @return $this
      */
     public function setUrl($url);
 
     /**
-     * Alias of the curl_getinfo function
+     * Alias of the curl_getinfo function.
+     *
      * @link http://php.net/manual/function.curl-getinfo.php
-     * @param  int          $flag defined in http://php.net/manual/function.curl-getinfo.php
+     *
+     * @param int $flag defined in http://php.net/manual/function.curl-getinfo.php
+     *
      * @return string|array the results of curl_getinfo
      */
     public function getInfo($flag = null);
 
     /**
      * Convenience method for setting the appropriate cURL options based on the desired
-     * HTTP request method
+     * HTTP request method.
      *
-     * @param  string $method
+     * @param string $method
+     *
      * @return $this
      */
     public function setMethod($method);

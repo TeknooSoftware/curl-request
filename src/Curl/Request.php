@@ -1,6 +1,6 @@
 <?php
 /**
- * Curl Request
+ * Curl Request.
  *
  * LICENSE
  *
@@ -12,23 +12,28 @@
  *
  * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @link        http://teknoo.it/curl Project website
+ *
  * @license     http://teknoo.it/curl/license/mit         MIT License
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Richard Déloge <r.deloge@uni-alteri.com>
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @version     0.8.0
  */
+
 namespace UniAlteri\Curl;
 
 /**
  * Class Request
- * An OO wrapper on the curl_* functions in PHP to manage and execute HTTP request via cUrl
+ * An OO wrapper on the curl_* functions in PHP to manage and execute HTTP request via cUrl.
  *
- * @package     CurlRequest
  * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @link        http://teknoo.it/curl Project website
+ *
  * @license     http://teknoo.it/curl/license/mit         MIT License
  * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
@@ -36,7 +41,8 @@ namespace UniAlteri\Curl;
 class Request implements RequestInterface
 {
     /**
-     * the cURL handle resource for this request
+     * the cURL handle resource for this request.
+     *
      * @var resource
      */
     protected $handle;
@@ -46,7 +52,7 @@ class Request implements RequestInterface
      */
     protected $options;
 
-    /**
+    /*
      * Map specific HTTP requests to their appropriate CURLOPT_* constant
      *
      * @var array
@@ -59,7 +65,7 @@ class Request implements RequestInterface
     );
 
     /**
-     * Instantiate a new cURL Request object
+     * Instantiate a new cURL Request object.
      *
      * @param Options $Options Validator to check option used to perform the request
      * @param string  $url     string URL to initialize the cURL handle with
@@ -76,7 +82,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * Getter for the internal curl handle resource
+     * Getter for the internal curl handle resource.
      *
      * @return resource the curl handle
      */
@@ -86,11 +92,15 @@ class Request implements RequestInterface
     }
 
     /**
-     * Alias of the curl_setopt function
+     * Alias of the curl_setopt function.
+     *
      * @link http://php.net/manual/function.curl-setopt.php
-     * @param  int                       $option Option defined in http://php.net/manual/function.curl-setopt.php
-     * @param  mixed                     $value
+     *
+     * @param int   $option Option defined in http://php.net/manual/function.curl-setopt.php
+     * @param mixed $value
+     *
      * @return $this
+     *
      * @throws \InvalidArgumentException if the option does not exist or if it is invalid
      */
     public function setOption($option, $value)
@@ -101,9 +111,12 @@ class Request implements RequestInterface
     }
 
     /**
-     * Alias of the curl_setopt_array function
+     * Alias of the curl_setopt_array function.
+     *
      * @link http://php.net/manual/function.curl-setopt-array.php
-     * @param  array $options defined in http://php.net/manual/function.curl-setopt-array.php
+     *
+     * @param array $options defined in http://php.net/manual/function.curl-setopt-array.php
+     *
      * @return $this
      */
     public function setOptionArray(array $options)
@@ -114,7 +127,7 @@ class Request implements RequestInterface
     }
 
     /**
-     * To free the resource at destruction
+     * To free the resource at destruction.
      */
     public function __destruct()
     {
@@ -122,10 +135,12 @@ class Request implements RequestInterface
     }
 
     /**
-     * Execute the cURL request
+     * Execute the cURL request.
      *
      * @link http://php.net/manual/function.curl-exec.php
-     * @return mixed          the results of curl_exec
+     *
+     * @return mixed the results of curl_exec
+     *
      * @throws ErrorException
      */
     public function execute()
@@ -146,7 +161,9 @@ class Request implements RequestInterface
 
     /**
      * To return the transfer as a string of the return value of execute() instead of outputting it out directly.
-     * @param  boolean $enable
+     *
+     * @param boolean $enable
+     *
      * @return $this
      */
     public function setReturnValue($enable)
@@ -161,8 +178,10 @@ class Request implements RequestInterface
     }
 
     /**
-     * Method to define url to call
-     * @param  string $url
+     * Method to define url to call.
+     *
+     * @param string $url
+     *
      * @return $this
      */
     public function setUrl($url)
@@ -173,9 +192,12 @@ class Request implements RequestInterface
     }
 
     /**
-     * Alias of the curl_getinfo function
+     * Alias of the curl_getinfo function.
+     *
      * @link http://php.net/manual/function.curl-getinfo.php
-     * @param  int          $flag defined in http://php.net/manual/function.curl-getinfo.php
+     *
+     * @param int $flag defined in http://php.net/manual/function.curl-getinfo.php
+     *
      * @return string|array the results of curl_getinfo
      */
     public function getInfo($flag = null)
@@ -189,9 +211,10 @@ class Request implements RequestInterface
 
     /**
      * Convenience method for setting the appropriate cURL options based on the desired
-     * HTTP request method
+     * HTTP request method.
      *
-     * @param  string $method
+     * @param string $method
+     *
      * @return $this
      */
     public function setMethod($method)
