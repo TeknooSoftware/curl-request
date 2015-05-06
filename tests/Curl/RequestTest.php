@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Curl Request.
  *
@@ -25,7 +26,6 @@
 
 namespace UniAlteri\Tests\Curl;
 
-use UniAlteri\Curl\ErrorException;
 use UniAlteri\Curl\Request;
 
 /**

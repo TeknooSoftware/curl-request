@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Curl Request.
  *
@@ -86,7 +87,7 @@ interface RequestInterface
     /**
      * To return the transfer as a string of the return value of execute() instead of outputting it out directly.
      *
-     * @param boolean $enable
+     * @param bool $enable
      *
      * @return $this
      */

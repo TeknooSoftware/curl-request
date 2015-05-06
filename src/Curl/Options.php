@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Curl Request.
  *
@@ -179,7 +180,7 @@ class Options implements OptionsInterface
      *
      * @param int $option An Integer Flag
      *
-     * @return boolean Whether or not the flag is a valid cURL option
+     * @return bool Whether or not the flag is a valid cURL option
      */
     public function isValidOption($option)
     {
@@ -192,7 +193,7 @@ class Options implements OptionsInterface
      * @param int   $option An integer flag
      * @param mixed $value  the value to be set to the integer flag
      *
-     * @return boolean $throw  Whether or not the value is of the correct type
+     * @return bool $throw  Whether or not the value is of the correct type
      *
      * @throws \InvalidArgumentException if the $option _is_not_ a valid cURL option
      */
@@ -220,7 +221,7 @@ class Options implements OptionsInterface
      * @param int      $option   Option defined in http://php.net/manual/function.curl-setopt.php
      * @param mixed    $value
      *
-     * @return boolean
+     * @return bool
      *
      * @throws \InvalidArgumentException if the option does not exist or if it is invalid
      */
@@ -239,7 +240,7 @@ class Options implements OptionsInterface
      * @param resource $resource curl resource
      * @param array    $options  defined in http://php.net/manual/function.curl-setopt-array.php
      *
-     * @return boolean
+     * @return bool
      */
     public function setOptionsValuesArray($resource, $options)
     {

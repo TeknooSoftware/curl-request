@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Curl Request.
  *
@@ -57,7 +58,7 @@ class Request implements RequestInterface
      *
      * @var array
      */
-    static protected $methodOptionMap = array(
+    protected static $methodOptionMap = array(
         'GET' => CURLOPT_HTTPGET,
         'POST' => CURLOPT_POST,
         'HEAD' => CURLOPT_NOBODY,
@@ -162,7 +163,7 @@ class Request implements RequestInterface
     /**
      * To return the transfer as a string of the return value of execute() instead of outputting it out directly.
      *
-     * @param boolean $enable
+     * @param bool $enable
      *
      * @return $this
      */
