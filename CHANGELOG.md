@@ -1,5 +1,17 @@
 #Uni Alteri - Curl Request library - Change Log
 
+##[0.8.2-beta] - 2015-05-06
+###Fixed
+- Code style fix
+
+##[0.8.1-beta] - 2015-02-20
+###Fixed
+- Fix documentation and read me
+- Code style fix
+
+###Changed
+- Composer dependencies
+
 ##[0.8.0-beta] - 2015-02-11
 - First public beta
 
