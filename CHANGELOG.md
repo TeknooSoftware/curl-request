@@ -1,5 +1,9 @@
 #Uni Alteri - Curl Request library - Change Log
 
+##[0.8.3-RC] - 2015-05-24
+###Added
+- Add travis file to support IC outside Uni Alteri's server
+
 ##[0.8.2-beta] - 2015-05-06
 ###Fixed
 - Code style fix
