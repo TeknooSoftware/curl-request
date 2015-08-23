@@ -11,7 +11,7 @@
  * obtain it through the world-wide-web, please send an email
  * to contact@uni-alteri.com so we can send you a copy immediately.
  *
- * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
+ * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://uni-alteri.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
  * @link        http://teknoo.it/curl Project website
@@ -32,7 +32,7 @@ use UniAlteri\Curl\RequestGenerator;
 /**
  * Class RequestGeneratorTest.
  *
- * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://agence.net.ua)
+ * @copyright   Copyright (c) 2009-2015 Uni Alteri (http://uni-alteri.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
  * @link        http://teknoo.it/curl Project website
