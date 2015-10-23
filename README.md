@@ -14,7 +14,7 @@ Installation
 ------------
 To install this library with composer, run this command :
 
-    composer require unialteri/curl-request
+    composer require teknoo/curl-request
 
 Requirements
 ------------
@@ -25,12 +25,13 @@ This library requires :
 
 API Documentation
 -----------------
-Generated documentation from the library with PhpDocumentor : [Open](https://cdn.rawgit.com/UniAlteri/curl-request/master/docs/api/index.html).
+Generated documentation from the library with PhpDocumentor : [Open](https://cdn.rawgit.com/TeknooSoftware/curl-request/master/docs/api/index.html).
 
 Credits
 -------
 Richard Déloge - <r.deloge@uni-alteri.com> - Lead developer.
-Uni Alteri - <http://uni-alteri.com> - <http://teknoo.it>
+Teknoo Software - <http://teknoo.software>
+Uni Alteri - <http://uni-alteri.com>
 
 License
 -------

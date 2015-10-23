@@ -1,5 +1,6 @@
 {
-    "name": "unialteri/curl-request",
+    "name": "teknoo/curl-request",
+    "replace": {"unialteri/curl-request": "self.version"},
     "type": "library",
     "description": "Allow you to create and execute HTTP Requests with cURL in POO context. Fork from zeroem/curl-bundle",
     "keywords": ["curl","library","http","request"],
@@ -17,8 +18,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/UniAlteri/curl-request/issues",
-        "source": "https://github.com/UniAlteri/curl-request"
+        "issues": "https://github.com/TeknooSoftware/curl-request/issues",
+        "source": "https://github.com/TeknooSoftware/curl-request"
     },
     "require":{
         "php": ">=5.4.0"

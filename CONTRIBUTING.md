@@ -10,7 +10,7 @@
 To install the project and run the tests, you need to clone it first:
 
 ```sh
-$ git clone git://github.com/UniAlteri/curl-request
+$ git clone git://github.com/TeknooSoftware/curl-request
 ```
 
 You will then need to run a composer installation:
