@@ -1,6 +1,5 @@
 {
-    "name": "teknoo/curl-request",
-    "replace": {"unialteri/curl-request": "self.version"},
+    "name": "unialteri/curl-request",
     "type": "library",
     "description": "Allow you to create and execute HTTP Requests with cURL in POO context. Fork from zeroem/curl-bundle",
     "keywords": ["curl","library","http","request"],
