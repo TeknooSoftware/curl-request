@@ -1,5 +1,6 @@
 {
-    "name": "unialteri/curl-request",
+    "name": "teknoo/curl-request",
+    "replace": {"unialteri/curl-request": "self.version"},
     "type": "library",
     "description": "Allow you to create and execute HTTP Requests with cURL in POO context. Fork from zeroem/curl-bundle",
     "keywords": ["curl","library","http","request"],
@@ -37,5 +38,12 @@
     },
     "archive": {
         "exclude": ["demo", "vendor", ".idea"]
+    },
+    "extra": {
+        "helhum/class-alias-loader": {
+            "class-alias-maps": [
+                "Migrations/Code/ClassAliasMap.php"
+            ]
+        }
     }
 }
