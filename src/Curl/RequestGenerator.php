@@ -15,17 +15,17 @@
  * @copyright   Copyright (c) 2009-2016 Richard Déloge (r.deloge@uni-alteri.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
- * @link        http://teknoo.it/curl Project website
+ * @link        http://teknoo.software/curl Project website
  *
- * @license     http://teknoo.it/curl/license/mit         MIT License
- * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
+ * @license     http://teknoo.software/curl/license/mit         MIT License
+ * @license     http://teknoo.software/curl/license/gpl-3.0     GPL v3 License
  * @author      Richard Déloge <r.deloge@uni-alteri.com>
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
  * @version     0.8.1
  */
 
-namespace UniAlteri\Curl;
+namespace Teknoo\Curl;
 
 /**
  * Class RequestGenerator
@@ -36,10 +36,10 @@ namespace UniAlteri\Curl;
  * @copyright   Copyright (c) 2009-2016 Richard Déloge (r.deloge@uni-alteri.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
- * @link        http://teknoo.it/curl Project website
+ * @link        http://teknoo.software/curl Project website
  *
- * @license     http://teknoo.it/curl/license/mit         MIT License
- * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
+ * @license     http://teknoo.software/curl/license/mit         MIT License
+ * @license     http://teknoo.software/curl/license/gpl-3.0     GPL v3 License
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  */
 class RequestGenerator

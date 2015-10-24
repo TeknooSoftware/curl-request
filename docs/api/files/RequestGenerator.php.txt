@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Curl Request
+ * Curl Request.
  *
  * LICENSE
  *
@@ -13,27 +14,32 @@
  * @copyright   Copyright (c) 2009-2016 Uni Alteri (http://uni-alteri.com)
  * @copyright   Copyright (c) 2009-2016 Richard Déloge (r.deloge@uni-alteri.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
- * @link        http://teknoo.it/curl Project website
- * @license     http://teknoo.it/curl/license/mit         MIT License
- * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
+ *
+ * @link        http://teknoo.software/curl Project website
+ *
+ * @license     http://teknoo.software/curl/license/mit         MIT License
+ * @license     http://teknoo.software/curl/license/gpl-3.0     GPL v3 License
  * @author      Richard Déloge <r.deloge@uni-alteri.com>
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
+ *
  * @version     0.8.1
  */
-namespace UniAlteri\Curl;
+
+namespace Teknoo\Curl;
 
 /**
  * Class RequestGenerator
  * A service class for generating Curl\Request objects with an initial
- * set of CURLOPT_* options set
+ * set of CURLOPT_* options set.
  *
- * @package     CurlRequest
  * @copyright   Copyright (c) 2009-2016 Uni Alteri (http://uni-alteri.com)
  * @copyright   Copyright (c) 2009-2016 Richard Déloge (r.deloge@uni-alteri.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
- * @link        http://teknoo.it/curl Project website
- * @license     http://teknoo.it/curl/license/mit         MIT License
- * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
+ *
+ * @link        http://teknoo.software/curl Project website
+ *
+ * @license     http://teknoo.software/curl/license/mit         MIT License
+ * @license     http://teknoo.software/curl/license/gpl-3.0     GPL v3 License
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  */
 class RequestGenerator
@@ -89,8 +95,10 @@ class RequestGenerator
     }
 
     /**
-     * To define the original request to use as "model" in the service. It will be cloned at each call of getRequest()
-     * @param  RequestInterface $request
+     * To define the original request to use as "model" in the service. It will be cloned at each call of getRequest().
+     *
+     * @param RequestInterface $request
+     *
      * @return $this
      */
     public function setRequest(RequestInterface $request)
@@ -101,7 +109,7 @@ class RequestGenerator
     }
 
     /**
-     * Generate a Request object with preset options
+     * Generate a Request object with preset options.
      *
      * @return Request a cURL Request object
      */
@@ -110,6 +118,7 @@ class RequestGenerator
         if (!$this->request instanceof RequestInterface) {
             //Check if it is the first, call, create the request if needd
             $this->request = new Request($this->getOptions());
+            $this->request->setReturnValue(true);
 
             if (!empty($this->startArgs)) {
                 //Apply initial configuration
@@ -122,7 +131,7 @@ class RequestGenerator
     }
 
     /**
-     * Return the options manager user here
+     * Return the options manager user here.
      *
      * @return Options
      */
@@ -132,8 +141,10 @@ class RequestGenerator
     }
 
     /**
-     * To change the options manager to use in this service
-     * @param  OptionsInterface $options
+     * To change the options manager to use in this service.
+     *
+     * @param OptionsInterface $options
+     *
      * @return $this
      */
     public function setOptions(OptionsInterface $options)

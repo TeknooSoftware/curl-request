@@ -15,20 +15,20 @@
  * @copyright   Copyright (c) 2009-2016 Richard Déloge (r.deloge@uni-alteri.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
- * @link        http://teknoo.it/curl Project website
+ * @link        http://teknoo.software/curl Project website
  *
- * @license     http://teknoo.it/curl/license/mit         MIT License
- * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
+ * @license     http://teknoo.software/curl/license/mit         MIT License
+ * @license     http://teknoo.software/curl/license/gpl-3.0     GPL v3 License
  * @author      Richard Déloge <r.deloge@uni-alteri.com>
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
  * @version     0.8.1
  */
 
-namespace UniAlteri\Tests\Curl;
+namespace Teknoo\Tests\Curl;
 
-use UniAlteri\Curl\Request;
-use UniAlteri\Curl\RequestGenerator;
+use Teknoo\Curl\Request;
+use Teknoo\Curl\RequestGenerator;
 
 /**
  * Class RequestGeneratorTest.
@@ -37,10 +37,10 @@ use UniAlteri\Curl\RequestGenerator;
  * @copyright   Copyright (c) 2009-2016 Richard Déloge (r.deloge@uni-alteri.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
- * @link        http://teknoo.it/curl Project website
+ * @link        http://teknoo.software/curl Project website
  *
- * @license     http://teknoo.it/curl/license/mit         MIT License
- * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
+ * @license     http://teknoo.software/curl/license/mit         MIT License
+ * @license     http://teknoo.software/curl/license/gpl-3.0     GPL v3 License
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  */
 class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
@@ -50,7 +50,7 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructBadObject()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         new RequestGenerator($options, new \stdClass());
     }
 
@@ -59,7 +59,7 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructBadType()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         new RequestGenerator($options, false);
     }
 
@@ -68,18 +68,18 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new RequestGenerator();
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $generator->getRequest()
         );
 
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
 
         $generator = new RequestGenerator($options);
 
         $request1 = $generator->getRequest();
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $request1
         );
 
@@ -94,7 +94,7 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new RequestGenerator();
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $generator->getRequest()
         );
 
@@ -103,7 +103,7 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
         $request1 = $generator->getRequest();
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $request1
         );
 
@@ -118,11 +118,11 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new RequestGenerator();
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $generator->getRequest()
         );
 
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
 
         $counter = 0;
         $options->expects($this->exactly(2))
@@ -135,17 +135,17 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
                         $this->assertTrue($value);
                     } else {
                         $this->assertEquals(CURLOPT_URL, $name);
-                        $this->assertEquals('http://teknoo.it', $value);
+                        $this->assertEquals('http://teknoo.software', $value);
                     }
                 }
             );
 
-        $generator = new RequestGenerator($options, 'http://teknoo.it');
+        $generator = new RequestGenerator($options, 'http://teknoo.software');
 
         $request1 = $generator->getRequest();
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $request1
         );
 
@@ -160,17 +160,17 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new RequestGenerator();
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $generator->getRequest()
         );
 
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
 
         $request = new Request($options);
         $generator = new RequestGenerator($options, $request);
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $generator->getRequest()
         );
 
@@ -185,17 +185,17 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new RequestGenerator();
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $generator->getRequest()
         );
 
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
 
         $request = new Request($options);
         $generator = new RequestGenerator($options, $request);
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $generator->getRequest()
         );
 
@@ -213,12 +213,12 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new RequestGenerator();
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $generator->getRequest()
         );
 
         $generator = new RequestGenerator();
-        $this->assertInstanceOf('UniAlteri\Curl\Options', $generator->getOptions());
+        $this->assertInstanceOf('Teknoo\Curl\Options', $generator->getOptions());
     }
 
     public function testGetOptions()
@@ -226,11 +226,11 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new RequestGenerator();
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $generator->getRequest()
         );
 
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
 
         $generator = new RequestGenerator($options);
         $this->assertSame($options, $generator->getOptions());
@@ -241,16 +241,16 @@ class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new RequestGenerator();
 
         $this->assertInstanceOf(
-            'UniAlteri\Curl\Request',
+            'Teknoo\Curl\Request',
             $generator->getRequest()
         );
 
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
 
         $generator = new RequestGenerator($options);
         $this->assertSame($options, $generator->getOptions());
 
-        $options2 = $this->getMock('UniAlteri\Curl\Options');
+        $options2 = $this->getMock('Teknoo\Curl\Options');
         $generator->setOptions($options2);
         $this->assertSame($options2, $generator->getOptions());
     }

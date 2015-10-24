@@ -15,19 +15,19 @@
  * @copyright   Copyright (c) 2009-2016 Richard Déloge (r.deloge@uni-alteri.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
- * @link        http://teknoo.it/curl Project website
+ * @link        http://teknoo.software/curl Project website
  *
- * @license     http://teknoo.it/curl/license/mit         MIT License
- * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
+ * @license     http://teknoo.software/curl/license/mit         MIT License
+ * @license     http://teknoo.software/curl/license/gpl-3.0     GPL v3 License
  * @author      Richard Déloge <r.deloge@uni-alteri.com>
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
  * @version     0.8.1
  */
 
-namespace UniAlteri\Tests\Curl;
+namespace Teknoo\Tests\Curl;
 
-use UniAlteri\Curl\Request;
+use Teknoo\Curl\Request;
 
 /**
  * Class RequestTest.
@@ -36,17 +36,17 @@ use UniAlteri\Curl\Request;
  * @copyright   Copyright (c) 2009-2016 Richard Déloge (r.deloge@uni-alteri.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
- * @link        http://teknoo.it/curl Project website
+ * @link        http://teknoo.software/curl Project website
  *
- * @license     http://teknoo.it/curl/license/mit         MIT License
- * @license     http://teknoo.it/curl/license/gpl-3.0     GPL v3 License
+ * @license     http://teknoo.software/curl/license/mit         MIT License
+ * @license     http://teknoo.software/curl/license/gpl-3.0     GPL v3 License
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  */
 class RequestTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstructWithUrl()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
 
         $options->expects($this->once())
             ->method('setOptionValue')
@@ -54,16 +54,16 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 function ($resource, $name, $value) {
                     $this->assertNotEmpty($resource);
                     $this->assertEquals(CURLOPT_URL, $name);
-                    $this->assertEquals('http://teknoo.it', $value);
+                    $this->assertEquals('http://teknoo.software', $value);
                 }
             );
 
-        $request = new Request($options, 'http://teknoo.it');
+        $request = new Request($options, 'http://teknoo.software');
     }
 
     public function testSetOption()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -71,15 +71,15 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             ->with(
                 $this->equalTo($request->getHandle()),
                 $this->equalTo(CURLOPT_URL),
-                $this->equalTo('http://teknoo.it')
+                $this->equalTo('http://teknoo.software')
             );
 
-        $this->assertSame($request, $request->setOption(CURLOPT_URL, 'http://teknoo.it'));
+        $this->assertSame($request, $request->setOption(CURLOPT_URL, 'http://teknoo.software'));
     }
 
     public function testSetOptionArray()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -93,11 +93,11 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException UniAlteri\Curl\ErrorException
+     * @expectedException Teknoo\Curl\ErrorException
      */
     public function testExecuteError()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -119,7 +119,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
     public function testExecute()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -127,7 +127,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             ->with(
                 $this->equalTo($request->getHandle()),
                 $this->equalTo(CURLOPT_URL),
-                $this->equalTo('http://teknoo.it')
+                $this->equalTo('http://teknoo.software')
             )->willReturnCallback(
                 function ($resource, $option, $string) {
                     curl_setopt($resource, $option, $string);
@@ -135,7 +135,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 }
             );
 
-        $request->setOption(CURLOPT_URL, 'http://teknoo.it');
+        $request->setOption(CURLOPT_URL, 'http://teknoo.software');
         $result = $request->execute();
 
         $this->assertNotEmpty($result);
@@ -144,7 +144,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
     public function testSetReturnValueEnable()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -160,7 +160,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
     public function testSetReturnValueDisable()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -176,7 +176,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
     public function testSetUrl()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -184,29 +184,29 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             ->with(
                 $this->equalTo($request->getHandle()),
                 $this->equalTo(CURLOPT_URL),
-                $this->equalTo('http://teknoo.it')
+                $this->equalTo('http://teknoo.software')
             );
 
-        $this->assertEquals($request, $request->setUrl('http://teknoo.it'));
+        $this->assertEquals($request, $request->setUrl('http://teknoo.software'));
     }
 
     public function testGetInfoAll()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
         $this->assertTrue(is_array($request->getInfo()));
     }
 
     public function testGetInfoFlag()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
         $this->assertTrue(is_int($request->getInfo(CURLINFO_REDIRECT_COUNT)));
     }
 
     public function testSetMethodGet()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -222,7 +222,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
     public function testSetMethodHead()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -238,7 +238,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
     public function testSetMethodPost()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -254,7 +254,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
     public function testSetMethodPut()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -270,7 +270,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
     public function testSetMethodCustom()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
         $request = new Request($options);
 
         $options->expects($this->once())
@@ -286,7 +286,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
 
     public function testClone()
     {
-        $options = $this->getMock('UniAlteri\Curl\Options');
+        $options = $this->getMock('Teknoo\Curl\Options');
 
         $request = new Request($options);
         $clone = clone $request;
