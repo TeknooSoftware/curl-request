@@ -1,4 +1,5 @@
 <?php
+
 return array(
     'UniAlteri\Curl\ErrorException' => 'Teknoo\Curl\ErrorException',
     'UniAlteri\Curl\Options' => 'Teknoo\Curl\Options',

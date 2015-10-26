@@ -21,6 +21,9 @@
         "issues": "https://github.com/TeknooSoftware/curl-request/issues",
         "source": "https://github.com/TeknooSoftware/curl-request"
     },
+    "config": {
+        "optimize-autoloader": true
+    },
     "require":{
         "php": ">=5.4.0",
         "typo3/class-alias-loader":"~1.0"

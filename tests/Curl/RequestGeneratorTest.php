@@ -25,7 +25,7 @@
  * @version     0.8.1
  */
 
-namespace Teknoo\Tests\Curl;
+namespace Teknoo\tests\Curl;
 
 use Teknoo\Curl\Request;
 use Teknoo\Curl\RequestGenerator;

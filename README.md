@@ -1,4 +1,4 @@
-Uni Alteri - Curl Request library
+Teknoo Software - Curl Request library
 =================================
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/2a14b3eb-a649-43a4-9d6a-7dd5aef8d02b/mini.png)](https://insight.sensiolabs.com/projects/2a14b3eb-a649-43a4-9d6a-7dd5aef8d02b) 

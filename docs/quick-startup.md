@@ -1,4 +1,4 @@
-#Uni Alteri - Curl Request library - Quick startup
+#Teknoo Software - Curl Request library - Quick startup
 
 ##Presentation
 This library has been designed around three components :

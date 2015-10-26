@@ -1,4 +1,8 @@
-#Uni Alteri - Curl Request library - Change Log
+#Teknoo Software - Curl Request library - Change Log
+
+##[1.0.1] - 2015-10-26
+###Changed
+- Migrate the library from Uni Alteri organization to Teknoo Software
 
 ##[1.0.0] - 2015-08-23
 ###Fixed
