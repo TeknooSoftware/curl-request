@@ -11,15 +11,15 @@
  * obtain it through the world-wide-web, please send an email
  * to contact@uni-alteri.com so we can send you a copy immediately.
  *
- * @copyright   Copyright (c) 2009-2016 Uni Alteri (http://uni-alteri.com)
- * @copyright   Copyright (c) 2009-2016 Richard Déloge (r.deloge@uni-alteri.com)
+ *
+ * @copyright   Copyright (c) 2009-2016 Richard Déloge (richarddeloge@gmail.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
  * @link        http://teknoo.software/curl Project website
  *
  * @license     http://teknoo.software/curl/license/mit         MIT License
  * @license     http://teknoo.software/curl/license/gpl-3.0     GPL v3 License
- * @author      Richard Déloge <r.deloge@uni-alteri.com>
+ * @author      Richard Déloge <richarddeloge@gmail.com>
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
  * @version     0.8.1
@@ -31,8 +31,8 @@ namespace Teknoo\Curl;
  * Class Request
  * An OO wrapper on the curl_* functions in PHP to manage and execute HTTP request via cUrl.
  *
- * @copyright   Copyright (c) 2009-2016 Uni Alteri (http://uni-alteri.com)
- * @copyright   Copyright (c) 2009-2016 Richard Déloge (r.deloge@uni-alteri.com)
+ *
+ * @copyright   Copyright (c) 2009-2016 Richard Déloge (richarddeloge@gmail.com)
  * @copyright   Copyright (c) Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
  * @link        http://teknoo.software/curl Project website
