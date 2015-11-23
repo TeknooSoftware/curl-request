@@ -135,7 +135,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 }
             );
 
-        $request->setOption(CURLOPT_URL, 'http://teknoo.software');
+        $request->setOption(CURLOPT_URL, 'http://php.net');
         $result = $request->execute();
 
         $this->assertNotEmpty($result);
