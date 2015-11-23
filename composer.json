@@ -25,8 +25,7 @@
         "optimize-autoloader": true
     },
     "require":{
-        "php": ">=5.4.0",
-        "typo3/class-alias-loader":"~1.0"
+        "php": ">=5.4.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",
@@ -42,13 +41,5 @@
     },
     "archive": {
         "exclude": ["demo", "vendor", ".idea"]
-    },
-    "extra": {
-        "typo3/class-alias-loader": {
-            "always-add-alias-loader": true,
-            "class-alias-maps": [
-                "migration/ClassAliasMap.php"
-            ]
-        }
     }
 }

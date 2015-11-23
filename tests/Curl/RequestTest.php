@@ -127,7 +127,7 @@ class RequestTest extends \PHPUnit_Framework_TestCase
             ->with(
                 $this->equalTo($request->getHandle()),
                 $this->equalTo(CURLOPT_URL),
-                $this->equalTo('http://teknoo.software')
+                $this->equalTo('http://php.net')
             )->willReturnCallback(
                 function ($resource, $option, $string) {
                     curl_setopt($resource, $option, $string);
