@@ -1,5 +1,9 @@
 #Teknoo Software - Curl Request library - Change Log
 
+##[1.0.2] - 2016-01-27
+###Fixed
+- Clean .gitignore
+
 ##[1.0.1] - 2015-10-26
 ###Changed
 - Migrate the library from Uni Alteri organization to Teknoo Software
