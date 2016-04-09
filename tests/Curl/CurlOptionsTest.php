@@ -24,7 +24,6 @@
  *
  * @version     0.8.1
  */
-
 namespace Teknoo\tests\Curl;
 
 use Teknoo\Curl\Options;
@@ -168,12 +167,12 @@ class CurlOptionsTest extends \PHPUnit_Framework_TestCase
     public function goodOptions()
     {
         return array(
-            array(CURLOPT_AUTOREFERER,true),
-            array(CURLOPT_BUFFERSIZE,10),
-            array(CURLOPT_CAINFO,'a string'),
-            array(CURLOPT_HTTP200ALIASES,array(200,404,401)),
-            array(CURLOPT_POSTFIELDS,array('key' => 'value')),
-            array(CURLOPT_POSTFIELDS,'key=value'),
+            array(CURLOPT_AUTOREFERER, true),
+            array(CURLOPT_BUFFERSIZE, 10),
+            array(CURLOPT_CAINFO, 'a string'),
+            array(CURLOPT_HTTP200ALIASES, array(200, 404, 401)),
+            array(CURLOPT_POSTFIELDS, array('key' => 'value')),
+            array(CURLOPT_POSTFIELDS, 'key=value'),
         );
     }
 
@@ -185,11 +184,11 @@ class CurlOptionsTest extends \PHPUnit_Framework_TestCase
     public function badOptions()
     {
         return array(
-            array(CURLOPT_AUTOREFERER,'derp'),
-            array(CURLOPT_BUFFERSIZE,'derp'),
-            array(CURLOPT_CAINFO,false),
-            array(CURLOPT_HTTP200ALIASES,''),
-            array(CURLOPT_HTTP200ALIASES,new \stdClass()),
+            array(CURLOPT_AUTOREFERER, 'derp'),
+            array(CURLOPT_BUFFERSIZE, 'derp'),
+            array(CURLOPT_CAINFO, false),
+            array(CURLOPT_HTTP200ALIASES, ''),
+            array(CURLOPT_HTTP200ALIASES, new \stdClass()),
         );
     }
 
@@ -201,10 +200,10 @@ class CurlOptionsTest extends \PHPUnit_Framework_TestCase
     public function badOptionsName()
     {
         return array(
-            array('Bad','derp'),
-            array(CURLOPT_BUFFERSIZE,'derp'),
-            array(CURLOPT_CAINFO,false),
-            array(CURLOPT_HTTP200ALIASES,''),
+            array('Bad', 'derp'),
+            array(CURLOPT_BUFFERSIZE, 'derp'),
+            array(CURLOPT_CAINFO, false),
+            array(CURLOPT_HTTP200ALIASES, ''),
         );
     }
 }

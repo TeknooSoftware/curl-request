@@ -24,7 +24,6 @@
  *
  * @version     0.8.1
  */
-
 namespace Teknoo\Curl;
 
 /**

@@ -1,5 +1,9 @@
 #Teknoo Software - Curl Request library - Change Log
 
+##[1.0.3] - 2016-04-09
+###Fixed
+- Fix code style with cs-fixer
+
 ##[1.0.2] - 2016-01-27
 ###Fixed
 - Clean .gitignore

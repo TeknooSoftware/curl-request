@@ -24,7 +24,6 @@
  *
  * @version     0.8.1
  */
-
 namespace Teknoo\Curl;
 
 /**
@@ -133,7 +132,7 @@ class Options implements OptionsInterface
             'CURLOPT_INTERFACE' => 'string',
             'CURLOPT_KEYPASSWD' => 'string',
             'CURLOPT_KRB4LEVEL' => 'string',
-            'CURLOPT_POSTFIELDS' => array('string','array'),
+            'CURLOPT_POSTFIELDS' => array('string', 'array'),
             'CURLOPT_PROXY' => 'string',
             'CURLOPT_PROXYUSERPWD' => 'string',
             'CURLOPT_RANDOM_FILE' => 'string',
