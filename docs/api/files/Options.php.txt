@@ -9,7 +9,7 @@
  * license that are bundled with this package in the folder licences
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to contact@uni-alteri.com so we can send you a copy immediately.
+ * to richarddeloge@gmail.com so we can send you a copy immediately.
  *
  *
  * @copyright   Copyright (c) 2009-2016 Richard Déloge (richarddeloge@gmail.com)
@@ -24,7 +24,6 @@
  *
  * @version     0.8.1
  */
-
 namespace Teknoo\Curl;
 
 /**
@@ -133,7 +132,7 @@ class Options implements OptionsInterface
             'CURLOPT_INTERFACE' => 'string',
             'CURLOPT_KEYPASSWD' => 'string',
             'CURLOPT_KRB4LEVEL' => 'string',
-            'CURLOPT_POSTFIELDS' => array('string','array'),
+            'CURLOPT_POSTFIELDS' => array('string', 'array'),
             'CURLOPT_PROXY' => 'string',
             'CURLOPT_PROXYUSERPWD' => 'string',
             'CURLOPT_RANDOM_FILE' => 'string',

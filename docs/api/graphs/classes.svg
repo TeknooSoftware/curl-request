@@ -21,40 +21,10 @@
 <path fill="none" stroke="gray" d="M36,-60C36,-60 366.793,-60 366.793,-60 372.793,-60 378.793,-66 378.793,-72 378.793,-72 378.793,-282 378.793,-282 378.793,-288 372.793,-294 366.793,-294 366.793,-294 36,-294 36,-294 30,-294 24,-288 24,-282 24,-282 24,-72 24,-72 24,-66 30,-60 36,-60"/>
 <text text-anchor="middle" x="201.396" y="-281.2" font-family="Times,serif" font-size="11.00" fill="gray">Curl</text>
 </g>
-<!-- \\Teknoo\\Curl\\Options -->
-<g id="node1" class="node"><title>\\Teknoo\\Curl\\Options</title>
-<polygon fill="none" stroke="black" points="340.293,-266 276.293,-266 276.293,-230 340.293,-230 340.293,-266"/>
-<text text-anchor="middle" x="308.293" y="-245.2" font-family="Courier,monospace" font-size="11.00">Options</text>
-</g>
-<!-- \\Teknoo\\Curl\\OptionsInterface -->
-<g id="node5" class="node"><title>\\Teknoo\\Curl\\OptionsInterface</title>
-<polygon fill="none" stroke="black" points="157,-266 32,-266 32,-230 157,-230 157,-266"/>
-<text text-anchor="middle" x="94.5" y="-245.2" font-family="Courier,monospace" font-size="11.00">OptionsInterface</text>
-</g>
-<!-- \\Teknoo\\Curl\\Options&#45;&gt;\\Teknoo\\Curl\\OptionsInterface -->
-<g id="edge1" class="edge"><title>\\Teknoo\\Curl\\Options&#45;&gt;\\Teknoo\\Curl\\OptionsInterface</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M276.042,-248C247.539,-248 204.356,-248 167.37,-248"/>
-<polygon fill="none" stroke="black" points="167.119,-244.5 157.119,-248 167.119,-251.5 167.119,-244.5"/>
-</g>
-<!-- \\Teknoo\\Curl\\Request -->
-<g id="node2" class="node"><title>\\Teknoo\\Curl\\Request</title>
-<polygon fill="none" stroke="black" points="340.293,-212 276.293,-212 276.293,-176 340.293,-176 340.293,-212"/>
-<text text-anchor="middle" x="308.293" y="-191.2" font-family="Courier,monospace" font-size="11.00">Request</text>
-</g>
-<!-- \\Teknoo\\Curl\\RequestInterface -->
-<g id="node6" class="node"><title>\\Teknoo\\Curl\\RequestInterface</title>
-<polygon fill="none" stroke="black" points="157,-212 32,-212 32,-176 157,-176 157,-212"/>
-<text text-anchor="middle" x="94.5" y="-191.2" font-family="Courier,monospace" font-size="11.00">RequestInterface</text>
-</g>
-<!-- \\Teknoo\\Curl\\Request&#45;&gt;\\Teknoo\\Curl\\RequestInterface -->
-<g id="edge2" class="edge"><title>\\Teknoo\\Curl\\Request&#45;&gt;\\Teknoo\\Curl\\RequestInterface</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M276.042,-194C247.539,-194 204.356,-194 167.37,-194"/>
-<polygon fill="none" stroke="black" points="167.119,-190.5 157.119,-194 167.119,-197.5 167.119,-190.5"/>
-</g>
 <!-- \\Teknoo\\Curl\\ErrorException -->
-<g id="node3" class="node"><title>\\Teknoo\\Curl\\ErrorException</title>
-<polygon fill="none" stroke="black" points="363.793,-158 252.793,-158 252.793,-122 363.793,-122 363.793,-158"/>
-<text text-anchor="middle" x="308.293" y="-137.2" font-family="Courier,monospace" font-size="11.00">ErrorException</text>
+<g id="node1" class="node"><title>\\Teknoo\\Curl\\ErrorException</title>
+<polygon fill="none" stroke="black" points="363.793,-104 252.793,-104 252.793,-68 363.793,-68 363.793,-104"/>
+<text text-anchor="middle" x="308.293" y="-83.2" font-family="Courier,monospace" font-size="11.00">ErrorException</text>
 </g>
 <!-- \\RuntimeException -->
 <g id="node7" class="node"><title>\\RuntimeException</title>
@@ -62,14 +32,44 @@
 <text text-anchor="middle" x="94.5" y="-14.3" font-family="Times,serif" font-size="14.00" fill="gray">\RuntimeException</text>
 </g>
 <!-- \\Teknoo\\Curl\\ErrorException&#45;&gt;\\RuntimeException -->
-<g id="edge3" class="edge"><title>\\Teknoo\\Curl\\ErrorException&#45;&gt;\\RuntimeException</title>
-<path fill="none" stroke="black" d="M262.272,-121.845C256.611,-119.096 250.989,-116.126 245.793,-113 210.821,-91.9579 208.356,-77.7058 173.793,-56 163.798,-49.7231 152.612,-43.7386 141.894,-38.4525"/>
-<polygon fill="none" stroke="black" points="143.165,-35.1801 132.636,-33.9972 140.129,-41.4876 143.165,-35.1801"/>
+<g id="edge1" class="edge"><title>\\Teknoo\\Curl\\ErrorException&#45;&gt;\\RuntimeException</title>
+<path fill="none" stroke="black" d="M252.751,-68.4883C221.563,-58.4749 182.534,-45.9439 151.162,-35.8712"/>
+<polygon fill="none" stroke="black" points="151.856,-32.4181 141.264,-32.6935 149.716,-39.083 151.856,-32.4181"/>
+</g>
+<!-- \\Teknoo\\Curl\\Request -->
+<g id="node2" class="node"><title>\\Teknoo\\Curl\\Request</title>
+<polygon fill="none" stroke="black" points="340.293,-266 276.293,-266 276.293,-230 340.293,-230 340.293,-266"/>
+<text text-anchor="middle" x="308.293" y="-245.2" font-family="Courier,monospace" font-size="11.00">Request</text>
+</g>
+<!-- \\Teknoo\\Curl\\RequestInterface -->
+<g id="node6" class="node"><title>\\Teknoo\\Curl\\RequestInterface</title>
+<polygon fill="none" stroke="black" points="157,-266 32,-266 32,-230 157,-230 157,-266"/>
+<text text-anchor="middle" x="94.5" y="-245.2" font-family="Courier,monospace" font-size="11.00">RequestInterface</text>
+</g>
+<!-- \\Teknoo\\Curl\\Request&#45;&gt;\\Teknoo\\Curl\\RequestInterface -->
+<g id="edge2" class="edge"><title>\\Teknoo\\Curl\\Request&#45;&gt;\\Teknoo\\Curl\\RequestInterface</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M276.042,-248C247.539,-248 204.356,-248 167.37,-248"/>
+<polygon fill="none" stroke="black" points="167.119,-244.5 157.119,-248 167.119,-251.5 167.119,-244.5"/>
 </g>
 <!-- \\Teknoo\\Curl\\RequestGenerator -->
-<g id="node4" class="node"><title>\\Teknoo\\Curl\\RequestGenerator</title>
-<polygon fill="none" stroke="black" points="370.793,-104 245.793,-104 245.793,-68 370.793,-68 370.793,-104"/>
-<text text-anchor="middle" x="308.293" y="-83.2" font-family="Courier,monospace" font-size="11.00">RequestGenerator</text>
+<g id="node3" class="node"><title>\\Teknoo\\Curl\\RequestGenerator</title>
+<polygon fill="none" stroke="black" points="370.793,-158 245.793,-158 245.793,-122 370.793,-122 370.793,-158"/>
+<text text-anchor="middle" x="308.293" y="-137.2" font-family="Courier,monospace" font-size="11.00">RequestGenerator</text>
+</g>
+<!-- \\Teknoo\\Curl\\Options -->
+<g id="node4" class="node"><title>\\Teknoo\\Curl\\Options</title>
+<polygon fill="none" stroke="black" points="340.293,-212 276.293,-212 276.293,-176 340.293,-176 340.293,-212"/>
+<text text-anchor="middle" x="308.293" y="-191.2" font-family="Courier,monospace" font-size="11.00">Options</text>
+</g>
+<!-- \\Teknoo\\Curl\\OptionsInterface -->
+<g id="node5" class="node"><title>\\Teknoo\\Curl\\OptionsInterface</title>
+<polygon fill="none" stroke="black" points="157,-212 32,-212 32,-176 157,-176 157,-212"/>
+<text text-anchor="middle" x="94.5" y="-191.2" font-family="Courier,monospace" font-size="11.00">OptionsInterface</text>
+</g>
+<!-- \\Teknoo\\Curl\\Options&#45;&gt;\\Teknoo\\Curl\\OptionsInterface -->
+<g id="edge3" class="edge"><title>\\Teknoo\\Curl\\Options&#45;&gt;\\Teknoo\\Curl\\OptionsInterface</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M276.042,-194C247.539,-194 204.356,-194 167.37,-194"/>
+<polygon fill="none" stroke="black" points="167.119,-190.5 157.119,-194 167.119,-197.5 167.119,-190.5"/>
 </g>
 </g>
 </svg>
