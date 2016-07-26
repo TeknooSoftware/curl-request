@@ -6,9 +6,18 @@ Teknoo Software - Curl Request library
 Welcome and thank you to having downloaded this library. This library allows you to easily create and execute HTTP Requests with cURL. 
 It was a fork from zeroem/curl-bundle". Symfony dependencies has been removed, and this lib has been redesigned.
 
-Quick startup
--------------
-Quick How-to to learn how use this library : [Startup](docs/quick-startup.md).
+Simple example
+--------------
+
+    $generator = new Teknoo\Curl\RequestGenerator();
+    
+    $request = $generator->getRequest();
+    
+    //Fetch the URL http://teknoo.it with a GET Method.
+    $request->setUrl('http://teknoo.it')
+        ->setMethod('GET');
+        
+    echo $request->execute();    
 
 Installation & Requirements
 ---------------------------
@@ -20,6 +29,10 @@ This library requires :
 
 * PHP 5.4+
 * cUrl extension
+
+Quick Howto
+-----------
+Quick How-to to learn how use this library : [Startup](docs/quick-startup.md).
 
 API Documentation
 -----------------
