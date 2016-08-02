@@ -18,7 +18,7 @@
  * @link        http://teknoo.software/curl Project website
  *
  * @license     http://teknoo.software/curl/license/mit         MIT License
- * @license     http://teknoo.software/curl/license/gpl-3.0     GPL v3 License
+ *
  * @author      Richard Déloge <richarddeloge@gmail.com>
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  *
@@ -39,7 +39,7 @@ use Teknoo\Curl\RequestGenerator;
  * @link        http://teknoo.software/curl Project website
  *
  * @license     http://teknoo.software/curl/license/mit         MIT License
- * @license     http://teknoo.software/curl/license/gpl-3.0     GPL v3 License
+ *
  * @author      Darrell Hamilton <darrell.noice@gmail.com> (initial developer)
  */
 class RequestGeneratorTest extends \PHPUnit_Framework_TestCase
