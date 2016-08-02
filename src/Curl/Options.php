@@ -170,7 +170,7 @@ class Options implements OptionsInterface
 
         //Browse each constant to check if there are available here
         foreach ($options as $option => $type) {
-            if (defined($option)) {
+            if (\defined($option)) {
                 $this->optionValueTypesList[constant($option)] = $type;
             }
         }
@@ -230,7 +230,7 @@ class Options implements OptionsInterface
     {
         $this->checkOptionValue($option, $value);
 
-        return curl_setopt($resource, $option, $value);
+        return \curl_setopt($resource, $option, $value);
     }
 
     /**
@@ -249,7 +249,7 @@ class Options implements OptionsInterface
             $this->checkOptionValue($option, $value);
         }
 
-        return curl_setopt_array($resource, $options);
+        return \curl_setopt_array($resource, $options);
     }
 
     /**
@@ -264,7 +264,7 @@ class Options implements OptionsInterface
     {
         $result = false;
 
-        if (is_array($type)) {
+        if (\is_array($type)) {
             //Several types are available
             foreach ($type as $item) {
                 //Check each type
@@ -278,7 +278,7 @@ class Options implements OptionsInterface
             //Scalar type
             $func = 'is_'.$type;
 
-            if (is_callable($func)) {
+            if (\is_callable($func)) {
                 //Execute the php method to perform the check
                 $result = $func($value);
             }

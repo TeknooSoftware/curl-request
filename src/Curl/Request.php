@@ -76,7 +76,7 @@ class Request implements RequestInterface
     {
         $this->options = $Options;
 
-        $this->handle = curl_init();
+        $this->handle = \curl_init();
 
         if (isset($url)) {
             $this->setUrl($url);
@@ -148,14 +148,14 @@ class Request implements RequestInterface
     public function execute()
     {
         //Execute the request
-        $value = curl_exec($this->handle);
+        $value = \curl_exec($this->handle);
 
         //Check if there are an error
-        $error_no = curl_errno($this->handle);
+        $error_no = \curl_errno($this->handle);
 
         if (0 !== $error_no) {
             //There are an error, throw an exception
-            throw new ErrorException(curl_error($this->handle), $error_no);
+            throw new ErrorException(\curl_error($this->handle), $error_no);
         }
 
         return $value;
@@ -205,9 +205,9 @@ class Request implements RequestInterface
     public function getInfo($flag = null)
     {
         if (isset($flag)) {
-            return curl_getinfo($this->handle, $flag);
+            return \curl_getinfo($this->handle, $flag);
         } else {
-            return curl_getinfo($this->handle);
+            return \curl_getinfo($this->handle);
         }
     }
 
@@ -235,6 +235,6 @@ class Request implements RequestInterface
      */
     public function __clone()
     {
-        $this->handle = curl_copy_handle($this->handle);
+        $this->handle = \curl_copy_handle($this->handle);
     }
 }

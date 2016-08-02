@@ -71,7 +71,7 @@ class RequestGenerator
             $this->options = $options;
         }
 
-        if (is_string($args)) {
+        if (\is_string($args)) {
             if (!empty($args)) {
                 //Service is started with initial configuration, register it to pass it when the first request
                 // will be required. Not create request object now to avoid to reserve unused resources
@@ -81,10 +81,10 @@ class RequestGenerator
             //Service is started with an existent request
             $this->request = clone $args;
         } else {
-            if (is_object($args)) {
-                $type = get_class($args);
+            if (\is_object($args)) {
+                $type = \get_class($args);
             } else {
-                $type = gettype($args);
+                $type = \gettype($args);
             }
 
             throw new \LogicException(
