@@ -1,5 +1,9 @@
 #Teknoo Software - Curl Request library - Change Log
 
+##[1.0.5] - 2016-08-04
+###Fixed
+- Improve optimization on call to native function and optimized
+
 ##[1.0.4] - 2016-07-26
 ###Fixed
 - Fix code style with cs-fixer
